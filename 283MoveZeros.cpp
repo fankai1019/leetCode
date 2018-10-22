@@ -65,8 +65,7 @@ int main() {
     Solution a;
     a.moveZeroes(nums);
 
-    for (auto i : nums) std::cout << i << ' ';
-    std::cout << std::endl;
+    print(nums);
 
     return 0;
 }
