@@ -1,3 +1,4 @@
 #default output
+tags
 *.out
 *.out.dSYM/
