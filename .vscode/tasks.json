@@ -1,0 +1,75 @@
+{
+    "tasks": [
+        {
+            "type": "cppbuild",
+            "label": "C/C++: g++.exe build active file",
+            "command": "C:/msys64/mingw64/bin/g++.exe",
+            "args": [
+                "-g",
+                "${file}",
+                "-o",
+                "${fileDirname}\\${fileBasenameNoExtension}.exe"
+            ],
+            "options": {
+                "cwd": "${fileDirname}"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "detail": "compiler: C:/msys64/mingw64/bin/g++.exe"
+        }
+        // // Task1: create build folder
+        // {
+        //     "type": "shell",
+        //     "label": "build_dir",
+        //     "command": "mkdir",
+        //     "args": [
+        //         "-p",
+        //         "build"
+        //     ],
+        //     "options": {
+        //         "cwd": "${workspaceFolder}",
+        //     },
+        // },
+        // // Task2: run cmake
+        // {
+        //     "type": "shell",
+        //     "label": "cmake",
+        //     "command": "cmake",
+        //     "args": [
+        //         "-G",
+        //         "MinGW Makefiles",
+        //         "-DCMAKE_EXPORT_COMPILE_COMMANDS=ON",
+        //         ".."
+        //     ],
+        //     "options": {
+        //         "cwd": "${workspaceFolder}/build",
+        //     },
+        //     "dependsOn": [
+        //         "build_dir"
+        //     ]
+        // },
+        // // Task3: build
+        // {
+        //     "type": "shell",
+        //     "label": "build",
+        //     "group": "build",
+        //     "command": "mingw32-make",
+        //     "args": [
+        //         "-j8"
+        //     ],
+        //     "options": {
+        //         "cwd": "${workspaceFolder}/build",
+        //     },
+        //     "problemMatcher": "$gcc",
+        //     "dependsOn": [
+        //         "cmake"
+        //     ]
+        // }
+    ],
+    "version": "2.0.0"
+}

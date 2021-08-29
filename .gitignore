@@ -2,3 +2,5 @@
 tags
 *.out
 *.out.dSYM/
+main.cpp
+main.exe
