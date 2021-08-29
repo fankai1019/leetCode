@@ -1,8 +1,5 @@
-#default output
 tags
 *.out
 *.out.dSYM/
-main.cpp
-main.exe
 _main.cpp
 _main.exe
