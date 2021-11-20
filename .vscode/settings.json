@@ -1,0 +1,41 @@
+{
+    "vim.vimrc.enable": true,
+    "remote.SSH.remotePlatform": {
+        "LOCAL_VM": "linux",
+        "192.168.8.128": "linux"
+    },
+    "files.autoGuessEncoding": true,
+    "editor.renderWhitespace": "all",
+    "workbench.editor.wrapTabs": true,
+    "editor.formatOnSave": true,
+    "cmake.configureOnOpen": true,
+    "vim.easymotion": true,
+    "clangd.onConfigChanged": "restart",
+    "debug.allowBreakpointsEverywhere": true,
+    "window.title": "${dirty}${activeEditorShort}${separator}${folderPath}${separator}${appName}",
+    "clangd.checkUpdates": true,
+    "C_Cpp.intelliSenseEngineFallback": "Enabled",
+    "C_Cpp.updateChannel": "Insiders",
+    "terminal.integrated.scrollback": 100000000,
+    "vim.leader": " ",
+    "vim.normalModeKeyBindingsNonRecursive": [
+        {
+            "before": [
+                "leader",
+                "o"
+            ],
+            "after": [
+                "leader",
+                "leader",
+                "s"
+            ]
+        },
+    ],
+    "window.zoomLevel": 1,
+    "clangd.path": "c:\\Users\\Kai\\AppData\\Roaming\\Code\\User\\globalStorage\\llvm-vs-code-extensions.vscode-clangd\\install\\12.0.1\\clangd_12.0.1\\bin\\clangd.exe",
+    "cmake.copyCompileCommands": "${workspaceFolder}/compile_commands.json",
+    "C_Cpp.intelliSenseEngine": "Default",
+    "files.associations": {
+        "ostream": "cpp"
+    },
+}
