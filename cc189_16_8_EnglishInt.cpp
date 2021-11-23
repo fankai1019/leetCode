@@ -88,7 +88,7 @@ private:
     string tenthToString(int x)
     {
         static vector<string> map = {
-            "", "", "Twenty", "Thrity", "Forty", "Fifty", "Sixty", "Seventy", "Eighty", "Ninety"};
+            "", "", "Twenty", "Thirty", "Forty", "Fifty", "Sixty", "Seventy", "Eighty", "Ninety"};
         return map[x];
     }
 };
