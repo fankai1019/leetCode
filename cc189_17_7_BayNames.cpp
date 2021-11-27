@@ -68,8 +68,16 @@ public:
 };
 
 // Union find
-// TC: approximately O(1), actually it's inverse akermen function with both path compression and rank reduction
-//     O(log(n)) n = num of nodes with rank reduction only
+// TC:  approximately O(1), actually it's inverse akermen function with both path compression and rank reduction
+
+//      starting from an empty data structure, path compression with link by rank
+//      performs any intermixed sequence of m >= n make set, union and find operations on a set of n elements takes O(m/alpha(m,n))
+
+//      starting from an empty data structure, path compression with naive linking
+//      performs any intermixed sequence of m >= n make set, union and find operations on a set of n elements takes O(mlogn)
+
+//      union or find can O(logn) with rank reduction, n = num of elements
+//      union or find can take O(n) with naive linking, n = num of elements
 // SP: O(n), need a parent map and vector to track ranks
 // Proof of time complexity (https://www.cs.princeton.edu/~wayne/kleinberg-tardos/pdf/UnionFind.pdf)
 class Solution2
