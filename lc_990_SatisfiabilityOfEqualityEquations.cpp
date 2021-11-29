@@ -25,8 +25,8 @@ public:
 
     bool merge(int x, int y)
     {
-        int parent1 = parents_[x];
-        int parent2 = parents_[y];
+        int parent1 = find(x);
+        int parent2 = find(y);
         if (parent1 == parent2)
             return false;
         int rank1 = ranks_[parent1];
