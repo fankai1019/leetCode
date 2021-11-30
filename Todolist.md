@@ -8,3 +8,4 @@ This is the to do list for learning algorithms.
 3. [ ] read hash table collision
 4. [ ] review space complexity of recursive call for 17.4
 5. [ ] understand why list can't be sorted as sort(list.begin(), list.end())
+6. [ ] learn backtracking search
