@@ -120,20 +120,20 @@ public:
 //     unique_ptr<Node> root_;
 // };
 
-class Solution
-{
-public:
-    int minimumLengthEncoding(vector<string> &words)
-    {
-        Trie trie;
-        int sum = 0;
-        for (string &word : words)
-        {
-            trie.insert(word, sum);
-        }
-        return sum;
-    }
-};
+// class Solution
+// {
+// public:
+//     int minimumLengthEncoding(vector<string> &words)
+//     {
+//         Trie trie;
+//         int sum = 0;
+//         for (string &word : words)
+//         {
+//             trie.insert(word, sum);
+//         }
+//         return sum;
+//     }
+// };
 
 int main()
 {
