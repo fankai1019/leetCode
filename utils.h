@@ -19,35 +19,45 @@ class BFS
 public:
     BFS(const vector<int> &ivec) : nodes_(ivec.size())
     {
-        for (size_t i = 0; i < ivec.size(); ++i)
-            nodes_[i].reset(ivec[i] == -1 ? nullptr : new TreeNode(ivec[i]));
+        if(!ivec.size())
+            return;
 
-        if (ivec.size() <= 1)
+        for (size_t i = 0; i < ivec.size(); ++i)
+            if(ivec[i] != -1)
+                nodes_[i].reset(new TreeNode(ivec[i]));
+
+        // check whether first node is null or not
+        if(!nodes_[0])
             return;
 
         queue<TreeNode *> nq;
         nq.push(nodes_[0].get());
         size_t count = 1;
-        while (true)
+        bool quit = false;
+        while(true)
         {
-            bool quit = false;
             size_t size = nq.size();
-            for (size_t i = 0; i < size; ++i)
+            for(size_t i=0; i<size; ++i)
             {
-                TreeNode *curr = nq.front();
+                TreeNode* curr = nq.front();
                 nq.pop();
-                if (curr)
+                if(curr)
                 {
+                    if(count + 1 > ivec.size())
+                    {
+                        quit = true;
+                        break;
+                    }
                     curr->left = nodes_[count++].get();
                     nq.push(curr->left);
-                    if (count == ivec.size())
+                    if(count + 1 > ivec.size())
                     {
                         quit = true;
                         break;
                     }
                     curr->right = nodes_[count++].get();
                     nq.push(curr->right);
-                    if (count == ivec.size())
+                    if(count + 1 > ivec.size())
                     {
                         quit = true;
                         break;
@@ -55,21 +65,10 @@ public:
                 }
                 else
                 {
-                    count++;
-                    if (count == ivec.size())
-                    {
-                        quit = true;
-                        break;
-                    }
-                    count++;
-                    if (count == ivec.size())
-                    {
-                        quit = true;
-                        break;
-                    }
+                    count+= 2;
                 }
             }
-            if (quit)
+            if(quit)
                 break;
         }
     }
