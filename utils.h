@@ -14,50 +14,62 @@ struct TreeNode
     TreeNode *right;
 };
 
+struct Node
+{
+    Node() : val(0), left(nullptr), right(nullptr), next(nullptr) {}
+    Node(int x) : val(x), left(nullptr), right(nullptr), next(nullptr) {}
+    Node(int x, Node *left, Node *right, Node *next = nullptr) : val(x), left(left), right(right), next(next) {}
+    int val;
+    Node *left;
+    Node *right;
+    Node *next;
+};
+
+template <typename T>
 class BFS
 {
 public:
     BFS(const vector<int> &ivec) : nodes_(ivec.size())
     {
-        if(!ivec.size())
+        if (!ivec.size())
             return;
 
         for (size_t i = 0; i < ivec.size(); ++i)
-            if(ivec[i] != -1)
-                nodes_[i].reset(new TreeNode(ivec[i]));
+            if (ivec[i] != -1)
+                nodes_[i].reset(new T(ivec[i]));
 
         // check whether first node is null or not
-        if(!nodes_[0])
+        if (!nodes_[0])
             return;
 
-        queue<TreeNode *> nq;
+        queue<T *> nq;
         nq.push(nodes_[0].get());
         size_t count = 1;
         bool quit = false;
-        while(true)
+        while (true)
         {
             size_t size = nq.size();
-            for(size_t i=0; i<size; ++i)
+            for (size_t i = 0; i < size; ++i)
             {
-                TreeNode* curr = nq.front();
+                T *curr = nq.front();
                 nq.pop();
-                if(curr)
+                if (curr)
                 {
-                    if(count + 1 > ivec.size())
+                    if (count + 1 > ivec.size())
                     {
                         quit = true;
                         break;
                     }
                     curr->left = nodes_[count++].get();
                     nq.push(curr->left);
-                    if(count + 1 > ivec.size())
+                    if (count + 1 > ivec.size())
                     {
                         quit = true;
                         break;
                     }
                     curr->right = nodes_[count++].get();
                     nq.push(curr->right);
-                    if(count + 1 > ivec.size())
+                    if (count + 1 > ivec.size())
                     {
                         quit = true;
                         break;
@@ -65,14 +77,14 @@ public:
                 }
                 else
                 {
-                    count+= 2;
+                    count += 2;
                 }
             }
-            if(quit)
+            if (quit)
                 break;
         }
     }
-    TreeNode *root()
+    T *root()
     {
         if (nodes_.size())
             return nodes_[0].get();
@@ -80,5 +92,5 @@ public:
     }
 
 private:
-    vector<unique_ptr<TreeNode>> nodes_;
+    vector<unique_ptr<T>> nodes_;
 };

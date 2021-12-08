@@ -71,8 +71,8 @@ int main()
 {
     vector<int> ivec1 = {1, 2, 1};
     vector<int> ivec2 = {1, 1, 2};
-    BFS bfs1(ivec1);
-    BFS bfs2(ivec2);
+    BFS<TreeNode> bfs1(ivec1);
+    BFS<TreeNode> bfs2(ivec2);
     Solution s;
     bool result = s.isSameTree(bfs1.root(), bfs2.root());
     cout << result << endl;

@@ -52,7 +52,7 @@ public:
 int main()
 {
     vector<int> ivec = {3, 9, 20, -1, -1, 15, 7};
-    BFS bfs(ivec);
+    BFS<TreeNode> bfs(ivec);
     Solution s;
     int result = s.maxDepth(bfs.root());
     cout << result << endl;

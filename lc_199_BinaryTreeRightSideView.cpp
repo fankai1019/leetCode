@@ -50,7 +50,7 @@ public:
 int main()
 {
     vector<int> ivec = {1, 2, 3, -1, 5, -1, 4};
-    BFS bfs(ivec);
+    BFS<TreeNode> bfs(ivec);
     Solution s;
     vector<int> result = s.rightSideView(bfs.root());
     for (const int i : result)

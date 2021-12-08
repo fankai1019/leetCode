@@ -54,7 +54,7 @@ public:
 int main()
 {
     vector<int> ivec = {3, 9, 20, -1, -1, 15, 7};
-    BFS bfs(ivec);
+    BFS<TreeNode> bfs(ivec);
     Solution s;
     vector<vector<int>> result = s.levelOrderBottom(bfs.root());
     for (const auto &ivec : result)
