@@ -19,7 +19,7 @@ using namespace std;
 // };
 
 // TC: O(n): every node is pushed and poped once, so 2n
-// SC: O(n): at worst case you need to hold all vertices in the queue
+// SC: O(n): in worst case you need to hold all vertices in the queue
 class Solution
 {
 public:
