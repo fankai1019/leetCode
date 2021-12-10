@@ -94,3 +94,30 @@ public:
 private:
     vector<unique_ptr<T>> nodes_;
 };
+
+template <typename T>
+void printVec(const vector<T> &t_vec)
+{
+    for (size_t i = 0; i < t_vec.size(); ++i)
+    {
+        cout << t_vec[i];
+        if (i != t_vec.size() - 1)
+            cout << " ";
+    }
+    cout << endl;
+}
+
+template <typename T>
+void printVecVec(const vector<vector<T>> &t_vec_vec)
+{
+    for (size_t i = 0; i < t_vec_vec.size(); ++i)
+    {
+        for (size_t j = 0; j < t_vec_vec[i].size(); ++j)
+        {
+            cout << t_vec_vec[i][j];
+            if (j != t_vec_vec[i].size() - 1)
+                cout << " ";
+        }
+        cout << endl;
+    }
+}
