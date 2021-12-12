@@ -16,9 +16,10 @@ using namespace std;
 //     TreeNode *right;
 // };
 
+// BFS
 // TC: O(n): every node is pushed and poped once, so 2n
 // SC: O(n): in worst case you need to hold all vertices in the queue
-class Solution
+class Solution1
 {
 public:
     int maxDepth(TreeNode *root)
@@ -49,12 +50,29 @@ public:
     }
 };
 
+// DFS
+// TC: O(n): every node is visited 3 times, so 3n
+// SC: O(h): tree hight
+class Solution2
+{
+public:
+    int maxDepth(TreeNode *root)
+    {
+        if (!root)
+            return 0;
+        int left_max = maxDepth(root->left);
+        int right_max = maxDepth(root->right);
+        return max(left_max, right_max) + 1;
+    }
+};
+
 int main()
 {
     vector<int> ivec = {3, 9, 20, -1, -1, 15, 7};
-    BFS<TreeNode> bfs(ivec);
-    Solution s;
-    int result = s.maxDepth(bfs.root());
+    BFS<TreeNode> tree(ivec);
+    // Solution1 s;
+    Solution2 s;
+    int result = s.maxDepth(tree.root());
     cout << result << endl;
 
     return 0;

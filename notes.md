@@ -12,3 +12,7 @@
 
 3. Binary numbers:
    A simple guide about how binary numbers work can be found [https://www.fayewilliams.com/2014/02/18/binary-numbers-explained/].
+
+4. The time complexity of both DFS and BFS traversal is O(V+E), where V and E are the total number of vertices and edges in the graph, respectively
+   The memory is taken by DFS/BFS heavily depends on the structure of the tree/graph. The maximum memory taken by DFS is equal to the depth of the tree
+   and the maximum memory taken by BFS is equal to the width of the tree.
