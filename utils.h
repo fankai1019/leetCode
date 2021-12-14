@@ -29,61 +29,103 @@ template <typename T>
 class BFS
 {
 public:
-    BFS(const vector<int> &ivec) : nodes_(ivec.size())
+    BFS(const vector<int> &ivec)
     {
         if (!ivec.size())
             return;
-
-        for (size_t i = 0; i < ivec.size(); ++i)
-            if (ivec[i] != -1)
-                nodes_[i].reset(new T(ivec[i]));
-
-        // check whether first node is null or not
-        if (!nodes_[0])
-            return;
-
-        queue<T *> nq;
-        nq.push(nodes_[0].get());
-        size_t count = 1;
-        bool quit = false;
-        while (true)
+        nodes_.push_back(unique_ptr<T>(new T(ivec[0]))); // root
+        queue<T *> tq;
+        tq.push(nodes_[0].get());
+        size_t count = 0;
+        while (tq.size())
         {
-            size_t size = nq.size();
+            size_t size = tq.size();
             for (size_t i = 0; i < size; ++i)
             {
-                T *curr = nq.front();
-                nq.pop();
-                if (curr)
+                T *curr = tq.front();
+                tq.pop();
+                if (count + 1 < ivec.size() && ivec[count + 1] != -1)
                 {
-                    if (count + 1 > ivec.size())
-                    {
-                        quit = true;
-                        break;
-                    }
-                    curr->left = nodes_[count++].get();
-                    nq.push(curr->left);
-                    if (count + 1 > ivec.size())
-                    {
-                        quit = true;
-                        break;
-                    }
-                    curr->right = nodes_[count++].get();
-                    nq.push(curr->right);
-                    if (count + 1 > ivec.size())
-                    {
-                        quit = true;
-                        break;
-                    }
+                    nodes_.push_back(unique_ptr<T>(new T(ivec[count + 1])));
+                    tq.push(nodes_.back().get());
+                    curr->left = tq.back();
+                    count++;
                 }
                 else
+                    count++;
+                if (count + 1 < ivec.size() && ivec[count + 1] != -1)
                 {
-                    count += 2;
+                    nodes_.push_back(unique_ptr<T>(new T(ivec[count + 1])));
+                    tq.push(nodes_.back().get());
+                    curr->right = tq.back();
+                    count++;
+                }
+                else
+                    count++;
+            }
+        }
+    }
+
+    void print() const
+    {
+        if (!nodes_.size() || !nodes_[0])
+            return;
+        queue<T *> tq;
+        tq.push(nodes_[0].get());
+
+        vector<int> row;
+        row.push_back(nodes_[0]->val);
+        while (tq.size())
+        {
+            bool quit = true;
+            for (size_t i = 0; i < row.size(); ++i)
+            {
+                if (row[i] != -1)
+                {
+                    quit = false;
+                    break;
                 }
             }
             if (quit)
                 break;
+
+            row.clear();
+            size_t size = tq.size();
+            for (size_t i = 0; i < size; ++i)
+            {
+                T *curr = tq.front();
+                tq.pop();
+                if (curr)
+                    cout << curr->val << " ";
+                else
+                    cout << -1 << " ";
+
+                if (curr)
+                {
+                    tq.push(curr->left);
+                    if (curr->left)
+                        row.push_back(curr->left->val);
+                    else
+                        row.push_back(-1);
+                }
+                else
+                    tq.push(nullptr);
+
+                if (curr)
+                {
+                    tq.push(curr->right);
+                    if (curr->right)
+                        row.push_back(curr->right->val);
+                    else
+                        row.push_back(-1);
+                }
+                else
+                    tq.push(nullptr);
+            }
+            cout << endl;
         }
     }
+
     T *root()
     {
         if (nodes_.size())
