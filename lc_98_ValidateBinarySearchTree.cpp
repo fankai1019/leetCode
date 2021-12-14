@@ -18,8 +18,8 @@ using namespace std;
 // };
 
 // DFS
-// TC: O(n): every node is visited m times, so mn and m is a constant
-// SC: O(n): need a vector to store all nodes
+// TC: O(n^2): this is top down, at each node we need to check its subtree min and max
+// SC: O(h): tree height
 class Solution1
 {
 public:
