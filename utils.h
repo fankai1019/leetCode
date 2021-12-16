@@ -1,8 +1,14 @@
+#include <iostream>
 #include <memory>
 #include <queue>
+#include <stack>
 #include <string>
 #include <vector>
+#include <utility>
 using namespace std;
+
+// debug print
+#define dp(x) std::cout << #x " = " << x << std::endl
 
 struct TreeNode
 {
@@ -64,6 +70,53 @@ public:
                     count++;
             }
         }
+    }
+
+    // find the first node that has value == a
+    // order: 0 pre order, 1 in order, 2 post order
+    // if not found, return null ptr
+    T *find(int a, int order = 0) const
+    {
+        if (!nodes_.size() || !nodes_[0])
+            return nullptr;
+
+        // a stack of pair of nodes and whether they are visited
+        stack<pair<T *, bool>> ns;
+        ns.push(make_pair(nodes_[0].get(), false));
+        while (ns.size())
+        {
+            pair<T *, bool> curr = ns.top();
+            ns.pop();
+            if (!curr.first)
+                continue;
+            if (!curr.second) // not visited
+            {
+                if (order == 0)
+                {
+                    ns.push(make_pair(curr.first->right, false));
+                    ns.push(make_pair(curr.first->left, false));
+                    ns.push(make_pair(curr.first, true));
+                }
+                else if (order == 1)
+                {
+                    ns.push(make_pair(curr.first->right, false));
+                    ns.push(make_pair(curr.first, true));
+                    ns.push(make_pair(curr.first->left, false));
+                }
+                else
+                {
+                    ns.push(make_pair(curr.first, true));
+                    ns.push(make_pair(curr.first->right, false));
+                    ns.push(make_pair(curr.first->left, false));
+                }
+            }
+            else
+            {
+                if (curr.first->val == a)
+                    return curr.first;
+            }
+        }
+        return nullptr;
     }
 
     void print() const
