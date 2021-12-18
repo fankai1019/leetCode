@@ -119,15 +119,15 @@ public:
         return nullptr;
     }
 
-    void print() const
+    static void print(TreeNode *root)
     {
-        if (!nodes_.size() || !nodes_[0])
+        if (!root)
             return;
         queue<T *> tq;
-        tq.push(nodes_[0].get());
+        tq.push(root);
 
         vector<int> row;
-        row.push_back(nodes_[0]->val);
+        row.push_back(root->val);
         while (tq.size())
         {
             bool quit = true;

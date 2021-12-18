@@ -108,10 +108,9 @@ public:
 
 int main()
 {
-    int target_sum = 22;
     vector<int> ivec = {3, 5, 1, 6, 2, 0, 8, -1, -1, 7, 4};
     BFS<TreeNode> tree(ivec);
-    tree.print();
+    BFS<TreeNode>::print(tree.root());
     TreeNode *p = tree.find(5);
     TreeNode *q = tree.find(1);
     // Solution1 s;
