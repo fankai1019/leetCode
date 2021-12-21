@@ -38,15 +38,16 @@ public:
     {
         size_t n = nums.size();
         vector<int> memo(nums.size(), -1);
-        return helper(nums, 0, n, memo);
+        return helper(nums, 0, memo);
     }
 
 private:
     // Returns whether we can reach n - 1 from i
-    bool helper(const vector<int>& nums, int i, size_t n, vector<int>& memo)
+    bool helper(const vector<int>& nums, int i, vector<int>& memo)
     {
         if(memo[i] != -1)
             return memo[i];
+        size_t n = nums.size();
         if (i >= n - 1 || i + nums[i] >= n-1)
         {
             memo[i] = 1;
@@ -54,7 +55,7 @@ private:
         }
         for(size_t j=1; j<=nums[i]; ++j)
         {
-            if (helper(nums, i+j, n, memo))
+            if (helper(nums, i+j, memo))
             {
                 memo[i] = 1;
                 return true;
