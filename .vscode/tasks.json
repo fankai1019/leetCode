@@ -1,5 +1,6 @@
 {
     "tasks": [
+        // for windows build
         {
             "type": "cppbuild",
             "label": "C/C++: g++.exe build active file",
@@ -21,55 +22,31 @@
                 "isDefault": true
             },
             "detail": "compiler: C:/msys64/mingw64/bin/g++.exe"
+        },
+        // for mac build
+        {
+            "type": "shell",
+            "label": "C/C++: clang++ build active file",
+            "command": "/usr/bin/clang++",
+            "args": [
+                "-std=c++11",
+                "-stdlib=libc++",
+                "-g",
+                "${file}",
+                "-o",
+                "${fileDirname}/${fileBasenameNoExtension}.out"
+            ],
+            "options": {
+                "cwd": "${fileDirname}"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
         }
-        // // Task1: create build folder
-        // {
-        //     "type": "shell",
-        //     "label": "build_dir",
-        //     "command": "mkdir",
-        //     "args": [
-        //         "-p",
-        //         "build"
-        //     ],
-        //     "options": {
-        //         "cwd": "${workspaceFolder}",
-        //     },
-        // },
-        // // Task2: run cmake
-        // {
-        //     "type": "shell",
-        //     "label": "cmake",
-        //     "command": "cmake",
-        //     "args": [
-        //         "-G",
-        //         "MinGW Makefiles",
-        //         "-DCMAKE_EXPORT_COMPILE_COMMANDS=ON",
-        //         ".."
-        //     ],
-        //     "options": {
-        //         "cwd": "${workspaceFolder}/build",
-        //     },
-        //     "dependsOn": [
-        //         "build_dir"
-        //     ]
-        // },
-        // // Task3: build
-        // {
-        //     "type": "shell",
-        //     "label": "build",
-        //     "group": "build",
-        //     "command": "mingw32-make",
-        //     "args": [
-        //         "-j8"
-        //     ],
-        //     "options": {
-        //         "cwd": "${workspaceFolder}/build",
-        //     },
-        //     "problemMatcher": "$gcc",
-        //     "dependsOn": [
-        //         "cmake"
-        //     ]
-        // }
     ],
     "version": "2.0.0"
 }
