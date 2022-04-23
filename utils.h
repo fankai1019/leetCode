@@ -47,11 +47,15 @@ createList(const vector<int> &ivec)
 void clear(ListNode *&head)
 {
     if (!head)
+    {
+        cout << "Cleared!" << endl;
         return;
+    }
     if (!head->next)
     {
         delete head;
         head = nullptr;
+        cout << "Cleared!" << endl;
         return;
     }
     ListNode *curr = head;
