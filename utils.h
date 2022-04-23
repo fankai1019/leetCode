@@ -10,6 +10,58 @@ using namespace std;
 // debug print
 #define dp(x) std::cout << #x " = " << x << std::endl
 
+struct ListNode
+{
+    int val;
+    ListNode *next;
+    ListNode() : val(0), next(nullptr) {}
+    ListNode(int x) : val(x), next(nullptr) {}
+    ListNode(int x, ListNode *next) : val(val), next(next) {}
+};
+
+void print(const ListNode *const head)
+{
+    const ListNode *curr = head;
+    while (curr)
+    {
+        cout << curr->val << " ";
+        curr = curr->next;
+    }
+    cout << endl;
+    return;
+}
+
+ListNode *
+createList(const vector<int> &ivec)
+{
+    ListNode new_head(-1);
+    ListNode *curr = &new_head;
+    for (size_t i = 0; i < ivec.size(); ++i)
+    {
+        curr->next = new ListNode(ivec[i]);
+        curr = curr->next;
+    }
+    return new_head.next;
+}
+
+void clear(ListNode *&head)
+{
+    if (!head)
+        return;
+    if (!head->next)
+    {
+        delete head;
+        head = nullptr;
+        return;
+    }
+    ListNode *curr = head;
+    while (curr->next->next)
+        curr = curr->next;
+    delete curr->next;
+    curr->next = nullptr;
+    clear(head);
+}
+
 struct TreeNode
 {
     TreeNode() : val(0), left(nullptr), right(nullptr) {}
