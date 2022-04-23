@@ -12,17 +12,17 @@ class Solution
 public:
   ListNode *swapPairs(ListNode *head)
   {
-    if(!head || !head->next)
+    if (!head || !head->next)
       return head;
 
     ListNode new_head(-1);
-    new_head.next= head;
-    ListNode* curr = head;
-    ListNode* pre = &new_head;
-    while(curr && curr->next)
+    new_head.next = head;
+    ListNode *curr = head;
+    ListNode *pre = &new_head;
+    while (curr && curr->next)
     {
-      ListNode* next= curr->next;
-      ListNode* next_next= curr->next->next;
+      ListNode *next = curr->next;
+      ListNode *next_next = curr->next->next;
       pre->next = next;
       next->next = curr;
       curr->next = next_next;
@@ -37,7 +37,7 @@ public:
 int main()
 {
   vector<int> ivec = {1, 2, 3, 4};
-  ListNode* l = createList(ivec);
+  ListNode *l = createList(ivec);
   print(l);
 
   Solution s;
