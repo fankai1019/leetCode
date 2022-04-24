@@ -5,7 +5,7 @@
 #include "utils.h"
 using namespace std;
 
-// TC: O(n) fast slow 2 pointers
+// TC: O(n) only iterates once withiout memory leak
 // SC: O(1) no additional list is created
 class Solution
 {
