@@ -59,7 +59,6 @@ public:
 int main()
 {
   vector<int> ivec = {1, 2, 3, 4, 5};
-  int x = 3;
   ListNode *l = createList(ivec);
   print(l);
 
