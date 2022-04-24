@@ -87,6 +87,23 @@ struct Node
     Node *next;
 };
 
+void clearTree(TreeNode *&node)
+{
+    if (!node)
+        return;
+
+    clearTree(node->left);
+    clearTree(node->right);
+    delete node;
+    node = nullptr;
+}
+
+void clear(TreeNode *&root)
+{
+    clearTree(root);
+    cout << "Cleared!" << endl;
+}
+
 template <typename T>
 class BFS
 {

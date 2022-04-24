@@ -16,3 +16,11 @@
 4. The time complexity of both DFS and BFS traversal is O(V+E), where V and E are the total number of vertices and edges in the graph, respectively
    The memory is taken by DFS/BFS heavily depends on the structure of the tree/graph. The maximum memory taken by DFS is equal to the depth of the tree
    and the maximum memory taken by BFS is equal to the width of the tree.
+
+5. Master Theorem (https://www.programiz.com/dsa/master-theorem#:~:text=The%20master%20method%20is%20a,to%20have%20the%20same%20size)
+   T(n) = aT(n/b) + f(n)
+   where, T(n) has the following asymptotic bounds:
+      1. If f(n) = O(n^log_b(a-e)), then T(n) = O(n^log_b(a))
+      2. If f(n) = O(n^log_b(a)), then T(n) = O(n^log_b(a) * log n)
+      3. If f(n) = O(n^log_b(a+e)), then T(n) = O(f(n))
+   e > 0 is a constant
