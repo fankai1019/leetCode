@@ -289,3 +289,51 @@ void printVecVec(const vector<vector<T>> &t_vec_vec)
         cout << endl;
     }
 }
+
+class Sort
+{
+public:
+  void mergeSort(vector<int> &ivec)
+  {
+    if (ivec.size() <= 1)
+      return;
+    mergeSort(ivec, 0, ivec.size() - 1);
+  }
+
+private:
+  void mergeSort(vector<int> &ivec, size_t start, size_t end)
+  {
+    if (start < end)
+    {
+      size_t mid = (start + end) / 2;
+      mergeSort(ivec, start, mid);
+      mergeSort(ivec, mid + 1, end);
+      merge(ivec, start, mid, end);
+    }
+  }
+
+  void merge(vector<int> &ivec, size_t start, size_t mid, size_t end)
+  {
+    size_t i = start;
+    size_t j = mid + 1;
+    size_t k = 0;
+    vector<int> tmp(end - start + 1);
+
+    while (i <= mid && j <= end)
+    {
+      if (ivec[i] <= ivec[j])
+        tmp[k++] = ivec[i++];
+      else
+        tmp[k++] = ivec[j++];
+    }
+
+    while (i <= mid)
+      tmp[k++] = ivec[i++];
+
+    while (j <= end)
+      tmp[k++] = ivec[j++];
+
+    for (i = start; i <= end; ++i)
+      ivec[i] = tmp[i - start];
+  }
+};
