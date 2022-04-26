@@ -1,5 +1,4 @@
 #include <iostream>
-#include <unordered_map>
 #include <vector>
 #include "utils.h"
 
@@ -14,12 +13,12 @@ public:
   {
     ListNode new_head;
     new_head.next = head;
-    ListNode* curr = &new_head;
-    while(curr && curr->next)
+    ListNode *curr = &new_head;
+    while (curr && curr->next)
     {
-      if(curr->next->val == val)
+      if (curr->next->val == val)
       {
-        ListNode* curr_next = curr->next;
+        ListNode *curr_next = curr->next;
         curr->next = curr->next->next;
         delete curr_next;
         curr_next = nullptr;
@@ -35,10 +34,10 @@ int main()
 {
   vector<int> ivec = {1, 2, 6, 3, 4, 5, 6};
   int val = 6;
-  ListNode* l = createList(ivec);
+  ListNode *l = createList(ivec);
   print(l);
   Solution s;
-  ListNode* result = s.removeElements(l, val);
+  ListNode *result = s.removeElements(l, val);
   print(result);
   clear(result);
   return 0;
