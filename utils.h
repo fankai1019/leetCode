@@ -8,7 +8,7 @@
 using namespace std;
 
 // debug print
-#define dp(x) std::cout << #x " = " << x << std::endl
+#define dprint(x) std::cout << #x " = " << x << std::endl
 
 struct ListNode
 {
