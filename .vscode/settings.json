@@ -17,7 +17,7 @@
     "C_Cpp.intelliSenseEngineFallback": "Enabled",
     "C_Cpp.updateChannel": "Insiders",
     "terminal.integrated.scrollback": 100000000,
-    "vim.leader": " ",
+    "vim.leader": "n",
     "vim.normalModeKeyBindingsNonRecursive": [
         {
             "before": [
@@ -37,7 +37,8 @@
     "C_Cpp.intelliSenseEngine": "Default",
     "files.associations": {
         "ostream": "cpp",
-        "algorithm": "cpp"
+        "algorithm": "cpp",
+        "stack": "cpp"
     },
     "C_Cpp.clang_format_fallbackStyle": "Visual Studio",
 }

@@ -1,85 +1,67 @@
-#include <memory>
-#include <queue>
-#include <string>
-#include <vector>
-using namespace std;
+// dfs
+// visited = {}
+// void dfs(i)
+// {
+//     if(condition)
+//       return;
+//     visited[i] = true;
+//     for(status j from i)
+//     {
+//       if(!visited[j])
+//         dfs[j];
+//     }
+// }
 
-struct TreeNode
-{
-    TreeNode() : val(0), left(nullptr), right(nullptr) {}
-    TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
-    TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
-    int val;
-    TreeNode *left;
-    TreeNode *right;
-};
+// void dfs(TreeNode* root)
+// {
+//     if(condition)
+//       return;
+//     for(child in root)
+//       df(child);
+// }
 
-class BFS
-{
-public:
-    BFS(const vector<int> &ivec) : nodes_(ivec.size())
-    {
-        for (size_t i = 0; i < ivec.size(); ++i)
-            nodes_[i].reset(ivec[i] == -1 ? nullptr : new TreeNode(ivec[i]));
+// void dfs(TreeNode* root)
+// {
+//     if(condition)
+//       return;
+//     pre_order_do();
+//     dfs(root->left);
+//     in_order_do();
+//     dfs(root->right);
+//     post_order_do();
+// }
 
-        if (ivec.size() <= 1)
-            return;
+// dfs iterative
+// enum STATUS {NV, V}; (V: visted, NT: not visited)
 
-        queue<TreeNode *> nq;
-        nq.push(nodes_[0].get());
-        size_t count = 1;
-        while (true)
-        {
-            bool quit = false;
-            size_t size = nq.size();
-            for (size_t i = 0; i < size; ++i)
-            {
-                TreeNode *curr = nq.front();
-                nq.pop();
-                if (curr)
-                {
-                    curr->left = nodes_[count++].get();
-                    nq.push(curr->left);
-                    if (count == ivec.size())
-                    {
-                        quit = true;
-                        break;
-                    }
-                    curr->right = nodes_[count++].get();
-                    nq.push(curr->right);
-                    if (count == ivec.size())
-                    {
-                        quit = true;
-                        break;
-                    }
-                }
-                else
-                {
-                    count++;
-                    if (count == ivec.size())
-                    {
-                        quit = true;
-                        break;
-                    }
-                    count++;
-                    if (count == ivec.size())
-                    {
-                        quit = true;
-                        break;
-                    }
-                }
-            }
-            if (quit)
-                break;
-        }
-    }
-    TreeNode *root()
-    {
-        if (nodes_.size())
-            return nodes_[0].get();
-        return nullptr;
-    }
+// struct Node
+// {
+//   Node(TreeNode* n, STATUS s): node(n), status(s) {}
+//   TreeNode* node;
+//   STATUS status;
+// };
 
-private:
-    vector<unique_ptr<TreeNode>> nodes_;
-};
+// void dfs(TreeNode* root)
+// {
+//    Node root_node(root, NT);
+//    stack<Node> nstack;
+//    nstack.push(root);
+//    while(nstack.size())
+//    {
+//       Node node = nstack.top();
+//       nstack.pop();
+//       if(!node.node)
+//          continue;
+//       if(node.status == NV)
+//       {
+//          node.status = V;
+//          Node right_node(node.node->right, NV);
+//          Node left_node(left.node->right, NV);
+//          nstack.push(right_node);
+//          nstack.push(node);         // in order
+//          nstack.push(left_node);
+//       }
+//       else
+//          do_something();
+//    }
+// }
