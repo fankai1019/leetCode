@@ -8,7 +8,63 @@
 using namespace std;
 
 // debug print
-#define dp(x) std::cout << #x " = " << x << std::endl
+#define dprint(x) std::cout << #x " = " << x << std::endl
+
+struct ListNode
+{
+    int val;
+    ListNode *next;
+    ListNode() : val(0), next(nullptr) {}
+    ListNode(int x) : val(x), next(nullptr) {}
+    ListNode(int x, ListNode *next) : val(val), next(next) {}
+};
+
+void print(const ListNode *const head)
+{
+    const ListNode *curr = head;
+    while (curr)
+    {
+        cout << curr->val << " ";
+        curr = curr->next;
+    }
+    cout << endl;
+    return;
+}
+
+ListNode *
+createList(const vector<int> &ivec)
+{
+    ListNode new_head(-1);
+    ListNode *curr = &new_head;
+    for (size_t i = 0; i < ivec.size(); ++i)
+    {
+        curr->next = new ListNode(ivec[i]);
+        curr = curr->next;
+    }
+    return new_head.next;
+}
+
+void clear(ListNode *&head)
+{
+    if (!head)
+    {
+        cout << "Cleared!" << endl;
+        return;
+    }
+    if (!head->next)
+    {
+        delete head;
+        head = nullptr;
+        cout << "Cleared!" << endl;
+        return;
+    }
+    ListNode *curr = head;
+    while (curr->next->next)
+        curr = curr->next;
+    delete curr->next;
+    curr->next = nullptr;
+    clear(head);
+}
 
 struct TreeNode
 {
@@ -30,6 +86,23 @@ struct Node
     Node *right;
     Node *next;
 };
+
+void clearTree(TreeNode *&node)
+{
+    if (!node)
+        return;
+
+    clearTree(node->left);
+    clearTree(node->right);
+    delete node;
+    node = nullptr;
+}
+
+void clear(TreeNode *&root)
+{
+    clearTree(root);
+    cout << "Cleared!" << endl;
+}
 
 template <typename T>
 class BFS
@@ -216,3 +289,51 @@ void printVecVec(const vector<vector<T>> &t_vec_vec)
         cout << endl;
     }
 }
+
+class Sort
+{
+public:
+  void mergeSort(vector<int> &ivec)
+  {
+    if (ivec.size() <= 1)
+      return;
+    mergeSort(ivec, 0, ivec.size() - 1);
+  }
+
+private:
+  void mergeSort(vector<int> &ivec, size_t start, size_t end)
+  {
+    if (start < end)
+    {
+      size_t mid = (start + end) / 2;
+      mergeSort(ivec, start, mid);
+      mergeSort(ivec, mid + 1, end);
+      merge(ivec, start, mid, end);
+    }
+  }
+
+  void merge(vector<int> &ivec, size_t start, size_t mid, size_t end)
+  {
+    size_t i = start;
+    size_t j = mid + 1;
+    size_t k = 0;
+    vector<int> tmp(end - start + 1);
+
+    while (i <= mid && j <= end)
+    {
+      if (ivec[i] <= ivec[j])
+        tmp[k++] = ivec[i++];
+      else
+        tmp[k++] = ivec[j++];
+    }
+
+    while (i <= mid)
+      tmp[k++] = ivec[i++];
+
+    while (j <= end)
+      tmp[k++] = ivec[j++];
+
+    for (i = start; i <= end; ++i)
+      ivec[i] = tmp[i - start];
+  }
+};
