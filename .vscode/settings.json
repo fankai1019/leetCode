@@ -17,7 +17,7 @@
     "C_Cpp.intelliSenseEngineFallback": "Enabled",
     "C_Cpp.updateChannel": "Insiders",
     "terminal.integrated.scrollback": 100000000,
-    "vim.leader": "n",
+    "vim.leader": "m",
     "vim.normalModeKeyBindingsNonRecursive": [
         {
             "before": [
