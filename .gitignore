@@ -2,6 +2,7 @@
 tags
 *.out
 *.out.dSYM/
+*.log
 _main.cpp
 _main copy.cpp
 *.exe
