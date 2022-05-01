@@ -95,7 +95,7 @@ public:
             {
                 int j = iq.front();
                 iq.pop();
-                if(visited.count(j))
+                if (visited.count(j))
                     continue;
 
                 if (j >= n - 1)
@@ -115,10 +115,65 @@ public:
     }
 };
 
+// DP
+// TC: O(n^2)
+// SP: O(n)
+// define dp[i] as the min number steps to reach i from 0
+// so far best DP
+class Solution4
+{
+public:
+    int jump(vector<int> &nums)
+    {
+        int n = nums.size();
+        vector<int> dp(n, INT_MAX);
+        // 1 <= nums.size() <= 10^4
+        dp[0] = 0;
+        for (int i = 0; i < nums.size() - 1; ++i)
+        {
+            int num_steps = dp[i] + 1;
+            for (int j = min(i + nums[i], n - 1); j > i; --j)
+            {
+                // we can break as values of step is increasing
+                // for any j > i, dp[j] >= dp[i]
+                // if num_dp < dp[j] is false
+                // no need to continue going backward
+                if (num_steps < dp[j])
+                    dp[j] = num_steps;
+                else
+                    break;
+            }
+        }
+        return dp[n - 1];
+    }
+};
+
+// DP
+// TC: O(n^2)
+// SP: O(n)
+// define dp[i] as the min number steps to reach i from n - 1
+class Solution5
+{
+public:
+    int jump(vector<int> &nums)
+    {
+        int n = nums.size();
+        vector<int> dp(n, INT_MAX - 1);
+        dp[n - 1] = 0;
+        for (int i = n - 2; i >= 0; --i)
+        {
+            for (int j = 1; j <= nums[i]; ++j)
+                dp[i] = min(dp[i], dp[min(n - 1, i + j)] + 1);
+        }
+
+        return dp[0];
+    }
+};
+
 // BFS + two pointer
 // TC(n) loop over all elements
 // SC(1) just need to store start and end
-class Solution4
+class Solution6
 {
 public:
     int jump(vector<int> &nums)
@@ -126,19 +181,19 @@ public:
         int steps = 0;
         int start = 0;
         int end = 0;
-        if(nums.size() == 1)
+        if (nums.size() == 1)
             return 0;
         size_t n = nums.size();
-        while(start <= end)
+        while (start <= end)
         {
-            if(start >= n - 1)
+            if (start >= n - 1)
                 return steps;
             int end_new = end;
-            for(int i=start; i <=end; ++i)
+            for (int i = start; i <= end; ++i)
             {
                 end_new = max(end_new, i + nums[i]);
-                if(end_new >= n - 1)
-                    return steps+1;
+                if (end_new >= n - 1)
+                    return steps + 1;
             }
             start = end + 1;
             end = end_new;
@@ -153,7 +208,9 @@ int main()
     // Solution1 s;
     // Solution2 s;
     // Solution3 s;
-    Solution4 s;
+    // Solution4 s;
+    // Solution5 s;
+    Solution6 s;
     vector<int> ivec = {2, 3, 0, 1, 4};
     int result = s.jump(ivec);
     cout << result << endl;
