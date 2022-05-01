@@ -32,6 +32,7 @@ public:
 // SP: O(1)
 class Solution2
 {
+public:
     bool canJump(vector<int> &nums)
     {
         int farthest = 0;
