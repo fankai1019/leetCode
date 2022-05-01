@@ -38,7 +38,8 @@
     "files.associations": {
         "ostream": "cpp",
         "algorithm": "cpp",
-        "stack": "cpp"
+        "stack": "cpp",
+        "vector": "cpp"
     },
     "C_Cpp.clang_format_fallbackStyle": "Visual Studio",
 }
