@@ -6,7 +6,7 @@
 #include "utils.h"
 using namespace std;
 
-// nodes:
+// tips:
 // if we define dp[i][j] as the num of possible paths to reach destination
 // then dp[i][j] = dp[i+1][j] + dp[i][j+1]
 // we need to loop backward and return dp[0][0]
