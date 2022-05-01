@@ -40,45 +40,10 @@ public:
     }
 };
 
-// DP
-// TC: O(n^2) n states and in each state the worst case needs to loop n elements
-// SP: O(n) store results
-class Solution2
-{
-public:
-    int jump(vector<int> &nums)
-    {
-        vector<int> memo(nums.size(), -1);
-        return helper(nums, 0, memo);
-    }
-
-private:
-    // Returns the number of jumps to reach n - 1
-    int helper(const vector<int> &nums, size_t i, vector<int> &memo)
-    {
-        if (memo[i] != -1)
-            return memo[i];
-        size_t n = nums.size();
-        if (i >= n - 1)
-            return memo[i] = 0;
-        if (i + nums[i] >= n - 1)
-            return memo[i] = 1;
-
-        int min_steps = n;
-        for (size_t j = 1; j <= nums[i]; ++j)
-        {
-            int steps = helper(nums, i + j, memo);
-            if (steps < min_steps)
-                min_steps = steps;
-        }
-        return memo[i] = 1 + min_steps;
-    }
-};
-
 // BFS
 // TC(n) iterate each node once
 // SC(n) a queue is needed
-class Solution3
+class Solution2
 {
 public:
     int jump(vector<int> &nums)
@@ -118,7 +83,7 @@ public:
 // BFS + two pointer
 // TC(n) loop over all elements
 // SC(1) just need to store start and end
-class Solution4
+class Solution3
 {
 public:
     int jump(vector<int> &nums)
@@ -146,6 +111,41 @@ public:
             }
         }
         return INT_MAX;
+    }
+};
+
+// DP
+// TC: O(n^2) n states and in each state the worst case needs to loop n elements
+// SP: O(n) store results
+class Solution4
+{
+public:
+    int jump(vector<int> &nums)
+    {
+        vector<int> memo(nums.size(), -1);
+        return helper(nums, 0, memo);
+    }
+
+private:
+    // Returns the number of jumps to reach n - 1
+    int helper(const vector<int> &nums, size_t i, vector<int> &memo)
+    {
+        if (memo[i] != -1)
+            return memo[i];
+        size_t n = nums.size();
+        if (i >= n - 1)
+            return memo[i] = 0;
+        if (i + nums[i] >= n - 1)
+            return memo[i] = 1;
+
+        int min_steps = n;
+        for (size_t j = 1; j <= nums[i]; ++j)
+        {
+            int steps = helper(nums, i + j, memo);
+            if (steps < min_steps)
+                min_steps = steps;
+        }
+        return memo[i] = 1 + min_steps;
     }
 };
 
@@ -232,11 +232,11 @@ int main()
 {
     // Solution1 s;
     // Solution2 s;
-    // Solution3 s;
+    Solution3 s;
     // Solution4 s;
     // Solution5 s;
     // Solution6 s;
-    Solution7 s;
+    // Solution7 s;
     vector<int> ivec = {2, 3, 0, 1, 4};
     int result = s.jump(ivec);
     cout << result << endl;
