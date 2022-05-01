@@ -65,3 +65,23 @@
 //          do_something();
 //    }
 // }
+
+// bfs
+// visited = {}
+// void bfs()
+// {
+//   queue<Node> nq;
+//   nq.push(initial status);
+//   while(nq.size()))
+//   {
+//     Node i = nq.back();
+//     nq.push_back();
+//     if(visited[i])
+//       continue;
+//     if(i is what we need to find)
+//       return node;
+//     for(all i status )
+//       if(j is valid)
+//          nq.push_front(j);
+//   }
+// }

@@ -76,8 +76,8 @@ private:
 };
 
 // BFS
-// TC(n^2) for each layer the worse case is we still push n elements in it. This has no memo, slower than dp
-// SC(n)
+// TC(n) iterate each node once
+// SC(n) a queue is needed
 class Solution3
 {
 public:
@@ -115,12 +115,46 @@ public:
     }
 };
 
+// BFS + two pointer
+// TC(n) loop over all elements
+// SC(1) just need to store start and end
+class Solution4
+{
+public:
+    int jump(vector<int> &nums)
+    {
+        int n = nums.size();
+        if (n == 1)
+            return 0;
+        int start = 0;
+        int end = 0;
+        int jumps = 1;
+        while (end <= n - 1)
+        {
+            int new_end = end;
+            for (int i = start; i <= end; ++i)
+            {
+                if (i + nums[i] >= n - 1)
+                    return jumps;
+                new_end = max(i + nums[i], new_end);
+                if (i == end)
+                {
+                    jumps++;
+                    start = end + 1;
+                    end = new_end;
+                }
+            }
+        }
+        return INT_MAX;
+    }
+};
+
 // DP
 // TC: O(n^2)
 // SP: O(n)
 // define dp[i] as the min number steps to reach i from 0
 // so far best DP
-class Solution4
+class Solution5
 {
 public:
     int jump(vector<int> &nums)
@@ -152,7 +186,7 @@ public:
 // TC: O(n^2)
 // SP: O(n)
 // define dp[i] as the min number steps to reach i from n - 1
-class Solution5
+class Solution6
 {
 public:
     int jump(vector<int> &nums)
@@ -170,36 +204,27 @@ public:
     }
 };
 
-// BFS + two pointer
-// TC(n) loop over all elements
-// SC(1) just need to store start and end
-class Solution6
+// Greedy
+// TC(n) iterate once
+// SC(1)
+class Solution7
 {
 public:
     int jump(vector<int> &nums)
     {
-        int steps = 0;
-        int start = 0;
-        int end = 0;
-        if (nums.size() == 1)
-            return 0;
-        size_t n = nums.size();
-        while (start <= end)
+        int jumps = 0;
+        int curr_end = 0;
+        int farthest = 0;
+        for (int i = 0; i < nums.size() - 1; ++i)
         {
-            if (start >= n - 1)
-                return steps;
-            int end_new = end;
-            for (int i = start; i <= end; ++i)
+            farthest = max(farthest, i + nums[i]);
+            if (i == curr_end)
             {
-                end_new = max(end_new, i + nums[i]);
-                if (end_new >= n - 1)
-                    return steps + 1;
+                jumps++;
+                curr_end = farthest;
             }
-            start = end + 1;
-            end = end_new;
-            steps++;
         }
-        return steps;
+        return jumps;
     }
 };
 
@@ -210,7 +235,8 @@ int main()
     // Solution3 s;
     // Solution4 s;
     // Solution5 s;
-    Solution6 s;
+    // Solution6 s;
+    Solution7 s;
     vector<int> ivec = {2, 3, 0, 1, 4};
     int result = s.jump(ivec);
     cout << result << endl;
