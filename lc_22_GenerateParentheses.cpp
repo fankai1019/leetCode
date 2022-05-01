@@ -6,7 +6,7 @@
 #include "utils.h"
 using namespace std;
 
-// dp recursive
+// DP recursive
 // TC: O(4^n/sqrt(n)), check the explanation in leetcode solution
 // SC: O(4^n/sqrt(n)), check the explanation in leetcode solution
 // dp[n] = "(dp[p])"+"dp[n-p-1]", 0 <= p <= n-1
@@ -58,7 +58,7 @@ private:
   }
 };
 
-// dp iterative
+// DP iterative
 // TC: O(4^n/sqrt(n)), check the explanation in leetcode solution
 // SC: O(4^n/sqrt(n)), check the explanation in leetcode solution
 class Solution2

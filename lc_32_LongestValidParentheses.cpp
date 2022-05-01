@@ -123,7 +123,7 @@ public:
   }
 };
 
-// dp
+// DP
 // define dp[i] as the longest length of valid parenthesis ending at i
 // TC: O(n) it iteraters all the characters once
 // SC: O(n) need a vector for dp
