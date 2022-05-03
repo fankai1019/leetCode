@@ -7,16 +7,6 @@
 #include "utils.h"
 using namespace std;
 
-// struct TreeNode
-// {
-//     TreeNode() : val(0), left(nullptr), right(nullptr) {}
-//     TreeNode(long x) : val(x), left(nullptr), right(nullptr) {}
-//     TreeNode(long x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
-//     long val;
-//     TreeNode *left;
-//     TreeNode *right;
-// };
-
 // DFS
 // TC: O(n): every node is visited 3 times, so 3n
 // SC: O(h): tree height
@@ -56,10 +46,10 @@ int main()
 {
     // vector<int> ivec = {3, 9, 20, -1, -1, 15, 7};
     vector<int> ivec = {1, 2, 2, 3, 3, -1, -1, 4, 4};
-    BFS<TreeNode> tree(ivec);
-    tree.print();
+    BFS<TreeNode> bfs(ivec);
+    bfs.print(bfs.root());
     Solution s;
-    bool result = s.isBalanced(tree.root());
+    bool result = s.isBalanced(bfs.root());
     cout << result << endl;
 
     return 0;
