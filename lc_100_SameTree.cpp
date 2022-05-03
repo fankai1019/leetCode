@@ -6,19 +6,9 @@
 #include "utils.h"
 using namespace std;
 
-// struct TreeNode
-// {
-//   TreeNode() : val(0), left(nullptr), right(nullptr) {}
-//   TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
-//   TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
-//   int val;
-//   TreeNode *left;
-//   TreeNode *right;
-// };
-
 // TC: O(n): every node is pushed and poped once, so 2n
 // SC: O(n): in worst case you need to hold all vertices in the queue
-class Solution
+class Solution1
 {
 public:
     bool isSameTree(TreeNode *p, TreeNode *q)
@@ -67,13 +57,40 @@ public:
     }
 };
 
+// TC: O(n): every node is pushed and poped once, so 2n
+// SC: O(n): stack frame size could be n
+class Solution2
+{
+public:
+    bool isSameTree(TreeNode *p, TreeNode *q)
+    {
+        return traverse(p, q);
+    }
+
+    bool traverse(TreeNode *p, TreeNode *q)
+    {
+        if (!p && !q)
+            return true;
+        if (p && !q)
+            return false;
+        if (!p && q)
+            return false;
+        if (p->val != q->val)
+            return false;
+        bool left = traverse(p->left, q->left);
+        bool right = traverse(p->right, q->right);
+        return left && right;
+    }
+};
+
 int main()
 {
     vector<int> ivec1 = {1, 2, 1};
     vector<int> ivec2 = {1, 1, 2};
     BFS<TreeNode> bfs1(ivec1);
     BFS<TreeNode> bfs2(ivec2);
-    Solution s;
+    // Solution1 s;
+    Solution2 s;
     bool result = s.isSameTree(bfs1.root(), bfs2.root());
     cout << result << endl;
     return 0;
