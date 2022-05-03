@@ -6,6 +6,7 @@
 #include "utils.h"
 using namespace std;
 
+// Iterative
 // TC: O(n): every node is pushed and poped once, so 2n
 // SC: O(n): in worst case you need to hold all vertices in the queue
 class Solution1
@@ -57,6 +58,7 @@ public:
     }
 };
 
+// Recursive
 // TC: O(n): every node is pushed and poped once, so 2n
 // SC: O(n): stack frame size could be n
 class Solution2
