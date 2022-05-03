@@ -32,14 +32,7 @@
 // }
 
 // dfs iterative
-// enum STATUS {NV, V}; (V: visted, NT: not visited)
-
-// struct Node
-// {
-//   Node(TreeNode* n, STATUS s): node(n), status(s) {}
-//   TreeNode* node;
-//   STATUS status;
-// };
+// check lc_144 BinaryTreePreOrderTraversal to see templates
 
 // void dfs(TreeNode* root)
 // {

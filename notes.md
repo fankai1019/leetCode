@@ -24,3 +24,14 @@
       2. If f(n) = O(n^log_b(a)), then T(n) = O(n^log_b(a) * log n)
       3. If f(n) = O(n^log_b(a+e)), then T(n) = O(f(n))
    e > 0 is a constant
+
+6. Full binary tree:
+      A full binary tree has its nodes with 0 or 2 children
+   Complete binary tree:
+      A binary tree is complete if all levels are completely filled except possibly the last level
+      and the last level has all keys as left as possible
+   Perfect binary tree:
+      A bineary tree is perfect if all nodes have two children and all leaves are at the same level
+      A perect binary tree is both full and complete
+   Balanced binary tree:
+      A binary tree in which the left and right subtrees of every node differ in height by no more than 1.
