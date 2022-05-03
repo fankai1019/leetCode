@@ -9,7 +9,7 @@ using namespace std;
 
 // Recursive
 // TC: O(n) each node is pushed and poped once
-// SC: O(n) worst stack frame size is n
+// SC: O(n) worst case stack frame size is n
 class Solution1
 {
 public:
