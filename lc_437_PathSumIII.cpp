@@ -38,6 +38,8 @@ private:
 };
 
 // DFS prefix sum + backtracking
+// TC: O(n) iterate onces
+// SC: O(height) stack frame size is h
 class Solution2
 {
 public:
