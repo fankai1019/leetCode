@@ -7,20 +7,10 @@
 #include "utils.h"
 using namespace std;
 
-// struct TreeNode
-// {
-//     TreeNode() : val(0), left(nullptr), right(nullptr) {}
-//     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
-//     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
-//     int val;
-//     TreeNode *left;
-//     TreeNode *right;
-// };
-
 // DFS
 // TC: O(n): every node is visited 3 times, so 3n
 // SC: O(h): tree hight
-class Solution
+class Solution1
 {
 public:
     int sumNumbers(TreeNode *root)
@@ -52,12 +42,41 @@ private:
     int sum_;
 };
 
+// Written in a slightly differnet way
+// DFS
+// TC: O(n): every node is visited 3 times, so 3n
+// SC: O(h): tree hight
+class Solution2
+{
+public:
+    int sumNumbers(TreeNode *root)
+    {
+        if (!root)
+            return 0;
+        return traverse(root, 0);
+    }
+
+private:
+    int traverse(TreeNode *root, int parentVal)
+    {
+        if (!root)
+            return 0;
+        int val = parentVal * 10 + root->val;
+        if (!root->left && !root->right)
+            return val;
+        int left = traverse(root->left, val);
+        int right = traverse(root->right, val);
+        return left + right;
+    }
+};
+
 int main()
 {
     vector<int> ivec = {1, 2, 3};
     // vector<int> ivec = {4, 9, 0, 5, 1};
     BFS<TreeNode> tree(ivec);
-    Solution s;
+    // Solution1 s;
+    Solution2 s;
     int result = s.sumNumbers(tree.root());
     cout << result << endl;
 
