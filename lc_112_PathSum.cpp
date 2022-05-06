@@ -8,16 +8,6 @@
 #include "utils.h"
 using namespace std;
 
-// struct TreeNode
-// {
-//     TreeNode() : val(0), left(nullptr), right(nullptr) {}
-//     TreeNode(long x) : val(x), left(nullptr), right(nullptr) {}
-//     TreeNode(long x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
-//     long val;
-//     TreeNode *left;
-//     TreeNode *right;
-// };
-
 // DFS + backtracking
 // TC: O(n): all nodes are visited
 // SC: O(h): depth of the tree
@@ -75,6 +65,34 @@ public:
     }
 };
 
+// DFS
+// TC: O(n) need to iterate once
+// SC: O(height) stack frame size is height
+class Solution3
+{
+public:
+    bool hasPathSum(TreeNode *root, int targetSum)
+    {
+        if (!root)
+            return false;
+        return traverse(root, 0, targetSum);
+    }
+
+private:
+    bool traverse(TreeNode *root, int val, int targetSum)
+    {
+        if (!root)
+            return false;
+        int sum = val + root->val;
+        if (!root->left && !root->right && sum == targetSum)
+            return true;
+        bool left = traverse(root->left, sum, targetSum);
+        bool right = traverse(root->right, sum, targetSum);
+
+        return left || right;
+    }
+};
+
 int main()
 {
     int target_sum = 22;
@@ -82,7 +100,8 @@ int main()
     BFS<TreeNode> bfs(ivec);
     BFS<TreeNode>::print(bfs.root());
     // Solution1 s;
-    Solution2 s;
+    // Solution2 s;
+    Solution3 s;
     bool result = s.hasPathSum(bfs.root(), target_sum);
     cout << result << endl;
 
