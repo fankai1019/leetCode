@@ -28,53 +28,6 @@ struct ListNode
   }
 };
 
-void print(const ListNode *const head)
-{
-  const ListNode *curr = head;
-  while (curr)
-  {
-    cout << curr->val << " ";
-    curr = curr->next;
-  }
-  cout << endl;
-  return;
-}
-
-ListNode *
-createList(const vector<int> &ivec)
-{
-  ListNode new_head(-1);
-  ListNode *curr = &new_head;
-  for (size_t i = 0; i < ivec.size(); ++i)
-  {
-    curr->next = new ListNode(ivec[i]);
-    curr = curr->next;
-  }
-  return new_head.next;
-}
-
-void clear(ListNode *&head)
-{
-  if (!head)
-  {
-    cout << "Cleared!" << endl;
-    return;
-  }
-  if (!head->next)
-  {
-    delete head;
-    head = nullptr;
-    cout << "Cleared!" << endl;
-    return;
-  }
-  ListNode *curr = head;
-  while (curr->next->next)
-    curr = curr->next;
-  delete curr->next;
-  curr->next = nullptr;
-  clear(head);
-}
-
 struct TreeNode
 {
   TreeNode()
@@ -113,23 +66,6 @@ struct Node
   Node *right;
   Node *next;
 };
-
-void clearTree(TreeNode *&node)
-{
-  if (!node)
-    return;
-
-  clearTree(node->left);
-  clearTree(node->right);
-  delete node;
-  node = nullptr;
-}
-
-void clear(TreeNode *&root)
-{
-  clearTree(root);
-  cout << "Cleared!" << endl;
-}
 
 template <typename T>
 class BFS
@@ -290,33 +226,6 @@ private:
   vector<unique_ptr<T>> nodes_;
 };
 
-template <typename T>
-void printVec(const vector<T> &t_vec)
-{
-  for (size_t i = 0; i < t_vec.size(); ++i)
-  {
-    cout << t_vec[i];
-    if (i != t_vec.size() - 1)
-      cout << " ";
-  }
-  cout << endl;
-}
-
-template <typename T>
-void printVecVec(const vector<vector<T>> &t_vec_vec)
-{
-  for (size_t i = 0; i < t_vec_vec.size(); ++i)
-  {
-    for (size_t j = 0; j < t_vec_vec[i].size(); ++j)
-    {
-      cout << t_vec_vec[i][j];
-      if (j != t_vec_vec[i].size() - 1)
-        cout << " ";
-    }
-    cout << endl;
-  }
-}
-
 class Sort
 {
 public:
@@ -364,3 +273,100 @@ private:
       ivec[i] = tmp[i - start];
   }
 };
+
+inline void
+print(const ListNode *const head)
+{
+  const ListNode *curr = head;
+  while (curr)
+  {
+    cout << curr->val << " ";
+    curr = curr->next;
+  }
+  cout << endl;
+  return;
+}
+
+inline ListNode *
+createList(const vector<int> &ivec)
+{
+  ListNode new_head(-1);
+  ListNode *curr = &new_head;
+  for (size_t i = 0; i < ivec.size(); ++i)
+  {
+    curr->next = new ListNode(ivec[i]);
+    curr = curr->next;
+  }
+  return new_head.next;
+}
+
+inline void
+clear(ListNode *&head)
+{
+  if (!head)
+  {
+    cout << "Cleared!" << endl;
+    return;
+  }
+  if (!head->next)
+  {
+    delete head;
+    head = nullptr;
+    cout << "Cleared!" << endl;
+    return;
+  }
+  ListNode *curr = head;
+  while (curr->next->next)
+    curr = curr->next;
+  delete curr->next;
+  curr->next = nullptr;
+  clear(head);
+}
+
+inline void
+clearTree(TreeNode *&node)
+{
+  if (!node)
+    return;
+
+  clearTree(node->left);
+  clearTree(node->right);
+  delete node;
+  node = nullptr;
+}
+
+inline void
+clear(TreeNode *&root)
+{
+  clearTree(root);
+  cout << "Cleared!" << endl;
+}
+
+template <typename T>
+inline void
+printVec(const vector<T> &t_vec)
+{
+  for (size_t i = 0; i < t_vec.size(); ++i)
+  {
+    cout << t_vec[i];
+    if (i != t_vec.size() - 1)
+      cout << " ";
+  }
+  cout << endl;
+}
+
+template <typename T>
+inline void
+printVecVec(const vector<vector<T>> &t_vec_vec)
+{
+  for (size_t i = 0; i < t_vec_vec.size(); ++i)
+  {
+    for (size_t j = 0; j < t_vec_vec[i].size(); ++j)
+    {
+      cout << t_vec_vec[i][j];
+      if (j != t_vec_vec[i].size() - 1)
+        cout << " ";
+    }
+    cout << endl;
+  }
+}
