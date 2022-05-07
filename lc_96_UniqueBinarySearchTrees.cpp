@@ -6,11 +6,11 @@
 
 using namespace std;
 
-// DP Top down (only)
+// DP Top down
 // Define dp[i] as the number of way to form a bst using nodes of value from 1 to i
 // Then dp[n] = Sum_1^n dp[i-1] * dp[n-i]
 // TC: O(n^2) we calculate numTrees(i) (for 1<=i<=n) only once and memoize it which will take O(N).
-//  For calculating each of numTrees(i), we need N iterations to calculate Sum_1^n dp[i-1] * dp[n-i].
+//  For calculating each of numTrees(i), we need n iterations to calculate Sum_1^n dp[i-1] * dp[n-i].
 //  Thus, the overall time complexity becomes O(n*n)
 // SC: O(n) a vector is needed to store dp
 class Solution
