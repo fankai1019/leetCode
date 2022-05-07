@@ -25,7 +25,16 @@
       3. If f(n) = O(n^log_b(a+e)), then T(n) = O(f(n))
    e > 0 is a constant
 
-6. Full binary tree:
+6. Catalan numbers
+   https://stackoverflow.com/questions/27371612/catalan-numbers-recursive-function-time-complexity
+
+   https://www.youtube.com/watch?v=0pTN0qzpt-Y
+   c[0] = 1
+   c[1] = 1
+   c[n] = c[0]c[n-1] + c[1]c[n-2] +...+c[n-1][0]
+        = Sum_0^{n-1}c[i]c[n-1-i]
+
+7. Full binary tree:
       A full binary tree has its nodes with 0 or 2 children
    Complete binary tree:
       A binary tree is complete if all levels are completely filled except possibly the last level
