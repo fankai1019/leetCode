@@ -26,63 +26,46 @@ class Solution1
 public:
     TreeNode *lowestCommonAncestor(TreeNode *root, TreeNode *p, TreeNode *q)
     {
-        TreeNode *result;
-        if (!root)
-            return nullptr;
         found_p_ = false;
         found_q_ = false;
-        vector<TreeNode *> p_an;
-        vector<TreeNode *> q_an;
-        helper(root, p, q, p_an, q_an);
-        size_t size = p_an.size() <= q_an.size() ? p_an.size() : q_an.size();
-        size_t count = 0;
-        for (size_t i = 0; i < size; ++i)
+        traverse(root, p, q);
+        TreeNode *result = nullptr;
+        for (int i = 0; i < min(ppath_.size(), qpath_.size()); ++i)
         {
-            if (p_an[i] != q_an[i])
-            {
-                count = i;
+            if (ppath_[i] == qpath_[i])
+                result = ppath_[i];
+            else
                 break;
-            }
         }
-        if (count)
-            return p_an[count - 1];
-        else
-            return p_an[size - 1];
+        return result;
     }
 
 private:
-    void helper(TreeNode *root, TreeNode *p, TreeNode *q,
-                vector<TreeNode *> &p_an, vector<TreeNode *> &q_an)
+    void traverse(TreeNode *root, TreeNode *p, TreeNode *q)
     {
-        if (!root || (found_p_ && found_q_))
+        if (!root)
             return;
         if (!found_p_)
-            p_an.push_back(root);
+            ppath_.push_back(root);
         if (!found_q_)
-            q_an.push_back(root);
+            qpath_.push_back(root);
+
         if (root == p)
             found_p_ = true;
         if (root == q)
             found_q_ = true;
-        helper(root->left, p, q, p_an, q_an);
-        if (root->left)
-        {
-            if (!found_p_)
-                p_an.pop_back();
-            if (!found_q_)
-                q_an.pop_back();
-        }
-        helper(root->right, p, q, p_an, q_an);
-        if (root->right)
-        {
-            if (!found_p_)
-                p_an.pop_back();
-            if (!found_q_)
-                q_an.pop_back();
-        }
+        traverse(root->left, p, q);
+        traverse(root->right, p, q);
+
+        if (!found_p_)
+            ppath_.pop_back();
+        if (!found_q_)
+            qpath_.pop_back();
     }
     bool found_p_;
     bool found_q_;
+    vector<TreeNode *> ppath_;
+    vector<TreeNode *> qpath_;
 };
 
 // DFS
