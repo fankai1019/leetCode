@@ -11,7 +11,7 @@ using namespace std;
 // DFS construction
 // TC: O(n^2) worst case loop over every node and finding num of left nodes takes linear time in each recursion
 //     preorder[1, 2, 3, 4] inorder[4, 3, 2, 1], caching node indexes can make TC linear
-// SC: O(h) stack frame size is tree size
+// SC: O(h) stack frame size is tree height
 class Solution1
 {
 public:
@@ -42,7 +42,7 @@ private:
 
 // DFS construction
 // TC: O(n) loop over every node. Indexes are cached in an unordered map and it takes const time to get num of left nodes
-// SC: O(h) stack frame size is tree size
+// SC: O(h) stack frame size is tree height
 // https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/solution/
 class Solution2
 {
