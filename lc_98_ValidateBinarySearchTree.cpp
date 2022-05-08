@@ -134,8 +134,8 @@ int main()
 {
     vector<int> ivec = {2, 1, 3};
     // vector<int> ivec = {2147483647};
-    // vector<int> ivec = {5, 1, 4, -1, -1, 3, 6};
-    // vector<int> ivec = {3, -1, 30, 10, -1, -1, 15, -1, 45};
+    // vector<int> ivec = {5, 1, 4, null, null, 3, 6};
+    // vector<int> ivec = {3, null, 30, 10, null, null, 15, null, 45};
     BFS<TreeNode> tree(ivec);
     // Solution1 s;
     // Solution2 s;

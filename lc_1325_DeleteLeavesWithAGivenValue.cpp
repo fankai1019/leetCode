@@ -38,12 +38,12 @@ private:
 
 int main()
 {
-    vector<int> ivec = {1, 2, 3, 2, -1, 2, 4};
+    vector<int> ivec = {1, 2, 3, 2, null, 2, 4};
     int target = 2;
     BFS<TreeNode> bfs(ivec);
-    BFS<TreeNode>::print(bfs.root());
+    print(bfs.root());
     Solution s;
     TreeNode *result = s.removeLeafNodes(bfs.root(), target);
-    BFS<TreeNode>::print(result);
+    print(result);
     return 0;
 }

@@ -68,7 +68,7 @@ public:
 
 int main()
 {
-    vector<int> ivec = {3, 9, 20, -1, -1, 15, 7};
+    vector<int> ivec = {3, 9, 20, null, null, 15, 7};
     BFS<TreeNode> tree(ivec);
     // Solution1 s;
     Solution2 s;

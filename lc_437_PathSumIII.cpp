@@ -76,10 +76,10 @@ private:
 
 int main()
 {
-    vector<int> ivec = {10, 5, -3, 3, 2, -1, 11, 3, -2, -1, 1};
+    vector<int> ivec = {10, 5, -3, 3, 2, null, 11, 3, -2, null, 1};
     int target = 8;
     BFS<TreeNode> bfs(ivec);
-    BFS<TreeNode>::print(bfs.root());
+    print(bfs.root());
     // Solution1 s;
     Solution2 s;
     int result = s.pathSum(bfs.root(), target);

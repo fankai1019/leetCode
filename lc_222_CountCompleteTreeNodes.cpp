@@ -88,7 +88,7 @@ int main()
     vector<int> ivec{1, 2, 3, 4, 5, 6};
     BFS<TreeNode> bfs(ivec);
     TreeNode *root = bfs.root();
-    BFS<TreeNode>::print(root);
+    print(root);
     cout << endl;
     // Solution1 s;
     Solution2 s;

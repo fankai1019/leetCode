@@ -44,10 +44,10 @@ private:
 
 int main()
 {
-    // vector<int> ivec = {3, 9, 20, -1, -1, 15, 7};
-    vector<int> ivec = {1, 2, 2, 3, 3, -1, -1, 4, 4};
+    // vector<int> ivec = {3, 9, 20, null, null, 15, 7};
+    vector<int> ivec = {1, 2, 2, 3, 3, null, null, 4, 4};
     BFS<TreeNode> bfs(ivec);
-    bfs.print(bfs.root());
+    print(bfs.root());
     Solution s;
     bool result = s.isBalanced(bfs.root());
     cout << result << endl;

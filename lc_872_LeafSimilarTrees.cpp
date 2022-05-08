@@ -47,14 +47,14 @@ private:
 
 int main()
 {
-    vector<int> ivec1 = {3, 5, 1, 6, 2, 9, 8, -1, -1, 7, 4};
-    vector<int> ivec2 = {3, 5, 1, 6, 7, 4, 2, -1, -1, -1, -1, -1, -1, 9, 8};
+    vector<int> ivec1 = {3, 5, 1, 6, 2, 9, 8, null, null, 7, 4};
+    vector<int> ivec2 = {3, 5, 1, 6, 7, 4, 2, null, null, null, null, null, null, 9, 8};
     BFS<TreeNode> bfs1(ivec1);
     BFS<TreeNode> bfs2(ivec2);
     TreeNode *root1 = bfs1.root();
     TreeNode *root2 = bfs2.root();
-    BFS<TreeNode>::print(root1);
-    BFS<TreeNode>::print(root2);
+    print(root1);
+    print(root2);
     Solution s;
     bool result = s.leafSimilar(root1, root2);
     cout << result << endl;

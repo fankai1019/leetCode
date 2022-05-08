@@ -42,7 +42,7 @@ int main()
     vector<int> ivec = {1, 2, 2, 3, 4, 4, 3};
     BFS<TreeNode> bfs(ivec);
     TreeNode *root = bfs.root();
-    bfs.print(root);
+    print(root);
     Solution s;
     bool result = s.isSymmetric(root);
     cout << result << endl;

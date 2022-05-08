@@ -49,11 +49,11 @@ private:
 
 int main()
 {
-    // vector<int> ivec = {3, 9, 20, -1, -1, 15, 7};
+    // vector<int> ivec = {3, 9, 20, null, null, 15, 7};
     vector<int> ivec = {1, 2, 3, 4, 5, 6, 7};
     BFS<TreeNode> bfs(ivec);
     TreeNode *root = bfs.root();
-    bfs.print(root);
+    print(root);
     Solution s;
     vector<vector<int>> result = s.verticalTraversal(root);
     printVecVec(result);

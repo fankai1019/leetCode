@@ -43,7 +43,7 @@ int main()
 
   Solution s;
   TreeNode *result = s.sortedListToBST(l);
-  BFS<TreeNode>::print(result);
+  print(result);
 
   clear(l);
   clear(result);

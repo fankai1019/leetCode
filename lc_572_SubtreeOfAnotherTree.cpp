@@ -60,8 +60,8 @@ int main()
     BFS<TreeNode> bfs2(ivec2);
     TreeNode *root1 = bfs1.root();
     TreeNode *root2 = bfs2.root();
-    BFS<TreeNode>::print(root1);
-    BFS<TreeNode>::print(root2);
+    print(root1);
+    print(root2);
     Solution s;
     bool result = s.isSubtree(root1, root2);
     cout << result << endl;

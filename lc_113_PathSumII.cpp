@@ -40,9 +40,9 @@ private:
 int main()
 {
     int target_sum = 22;
-    vector<int> ivec = {5, 4, 8, 11, -1, 13, 4, 7, 2, -1, -1, 5, 1};
+    vector<int> ivec = {5, 4, 8, 11, null, 13, 4, 7, 2, null, null, 5, 1};
     BFS<TreeNode> tree(ivec);
-    BFS<TreeNode>::print(tree.root());
+    print(tree.root());
     Solution s;
     vector<vector<int>> result = s.pathSum(tree.root(), target_sum);
     printVecVec(result);

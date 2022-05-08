@@ -96,9 +96,9 @@ private:
 int main()
 {
     int target_sum = 22;
-    vector<int> ivec = {5, 4, 8, 11, -1, 13, 4, 7, 2, -1, -1, -1, 1};
+    vector<int> ivec = {5, 4, 8, 11, null, 13, 4, 7, 2, null, null, null, 1};
     BFS<TreeNode> bfs(ivec);
-    BFS<TreeNode>::print(bfs.root());
+    print(bfs.root());
     // Solution1 s;
     // Solution2 s;
     Solution3 s;

@@ -92,10 +92,10 @@ private:
 
 int main()
 {
-    vector<int> ivec{7, 3, 15, -1, -1, 9, 20};
+    vector<int> ivec{7, 3, 15, null, null, 9, 20};
     BFS<TreeNode> bfs(ivec);
     TreeNode *root = bfs.root();
-    BFS<TreeNode>::print(root);
+    print(root);
     cout << endl;
     // BSTIterator1 BSTIter(bfs.root());
     BSTIterator2 BSTIter(bfs.root());

@@ -85,14 +85,14 @@ private:
 int main()
 {
     int key = 3;
-    // vector<int> ivec = {5, 3, 6, 2, 4, -1, 7};
-    // vector<int> ivec = {3, 2, 5, -1, -1, 4, 10, -1, -1, 8, 15, 7};
-    vector<int> ivec = {5, 3, 6, 2, 4, -1, 7};
+    // vector<int> ivec = {5, 3, 6, 2, 4, null, 7};
+    // vector<int> ivec = {3, 2, 5, null, null, 4, 10, null, null, 8, 15, 7};
+    vector<int> ivec = {5, 3, 6, 2, 4, null, 7};
     BFS<TreeNode> tree(ivec);
-    BFS<TreeNode>::print(tree.root());
+    print(tree.root());
     Solution s;
     TreeNode *result = s.deleteNode(tree.root(), key);
-    BFS<TreeNode>::print(result);
+    print(result);
     cout << result->val << endl;
 
     return 0;

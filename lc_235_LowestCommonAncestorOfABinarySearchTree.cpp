@@ -25,11 +25,11 @@ public:
 
 int main()
 {
-    vector<int> ivec = {6, 2, 8, 0, 4, 7, 9, -1, -1, 3, 5};
+    vector<int> ivec = {6, 2, 8, 0, 4, 7, 9, null, null, 3, 5};
     BFS<TreeNode> bfs(ivec);
     TreeNode *p = bfs.find(2);
     TreeNode *q = bfs.find(8);
-    BFS<TreeNode>::print(bfs.root());
+    print(bfs.root());
     Solution s;
     TreeNode *result = s.lowestCommonAncestor(bfs.root(), p, q);
     if (result)

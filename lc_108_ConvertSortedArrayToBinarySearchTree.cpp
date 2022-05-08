@@ -40,7 +40,7 @@ int main()
     printVec(ivec);
     Solution s;
     TreeNode *result = s.sortedArrayToBST(ivec);
-    BFS<TreeNode>::print(result);
+    print(result);
     clear(result);
     return 0;
 }

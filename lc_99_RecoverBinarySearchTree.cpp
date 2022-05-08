@@ -145,14 +145,14 @@ private:
 
 int main()
 {
-    vector<int> ivec = {1, 3, -1, -1, 2};
-    // vector<int> ivec = {3, 1, 4, -1, -1, 2};
+    vector<int> ivec = {1, 3, null, null, 2};
+    // vector<int> ivec = {3, 1, 4, null, null, 2};
     BFS<TreeNode> bfs(ivec);
-    BFS<TreeNode>::print(bfs.root());
+    print(bfs.root());
     // Solution1 s;
     Solution2 s;
     s.recoverTree(bfs.root());
-    BFS<TreeNode>::print(bfs.root());
+    print(bfs.root());
 
     return 0;
 }

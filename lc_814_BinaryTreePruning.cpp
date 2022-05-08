@@ -41,13 +41,13 @@ private:
 
 int main()
 {
-    vector<int> ivec = {1, -1, 0, 0, 1};
+    vector<int> ivec = {1, null, 0, 0, 1};
     BFS<TreeNode> bfs(ivec);
     TreeNode *root = bfs.root();
-    BFS<TreeNode>::print(root);
+    print(root);
     Solution s;
     TreeNode *result = s.pruneTree(root);
-    BFS<TreeNode>::print(result);
+    print(result);
 
     return 0;
 }

@@ -41,7 +41,7 @@ public:
 
 int main()
 {
-  vector<int> ivec = {3, 9, 30, -1, -1, 15, 7};
+  vector<int> ivec = {3, 9, 30, null, null, 15, 7};
   BFS<TreeNode> bfs(ivec);
   Solution s;
   vector<vector<int>> result = s.levelOrder(bfs.root());

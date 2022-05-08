@@ -127,7 +127,7 @@ int main()
     vector<TreeNode *> results = s.generateTrees(3);
     for (int i = 0; i < results.size(); ++i)
     {
-        BFS<TreeNode>::print(results[i]);
+        print(results[i]);
         cout << endl;
     }
     return 0;

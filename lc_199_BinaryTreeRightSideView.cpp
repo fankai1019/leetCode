@@ -49,7 +49,7 @@ public:
 
 int main()
 {
-    vector<int> ivec = {1, 2, 3, -1, 5, -1, 4};
+    vector<int> ivec = {1, 2, 3, null, 5, null, 4};
     BFS<TreeNode> bfs(ivec);
     Solution s;
     vector<int> result = s.rightSideView(bfs.root());

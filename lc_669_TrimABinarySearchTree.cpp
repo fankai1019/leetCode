@@ -51,9 +51,9 @@ int main()
     int low = 1;
     int high = 2;
     BFS<TreeNode> bfs(ivec);
-    BFS<TreeNode>::print(bfs.root());
+    print(bfs.root());
     Solution s;
     TreeNode *result = s.trimBST(bfs.root(), low, high);
-    BFS<TreeNode>::print(result);
+    print(result);
     return 0;
 }

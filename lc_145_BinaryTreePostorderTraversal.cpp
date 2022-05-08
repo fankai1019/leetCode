@@ -68,9 +68,9 @@ public:
 
 int main()
 {
-    vector<int> ivec = {1, -1, 2, 3};
+    vector<int> ivec = {1, null, 2, 3};
     BFS<TreeNode> bfs(ivec);
-    bfs.print(bfs.root());
+    print(bfs.root());
     // Solution1 s;
     Solution2 s;
     vector<int> result = s.postorderTraversal(bfs.root());

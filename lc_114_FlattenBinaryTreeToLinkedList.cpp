@@ -51,13 +51,13 @@ private:
 
 int main()
 {
-  vector<int> ivec = {1, 2, 5, 3, 4, -1, 6};
+  vector<int> ivec = {1, 2, 5, 3, 4, null, 6};
   BFS<TreeNode> bfs(ivec);
-  BFS<TreeNode>::print(bfs.root());
+  print(bfs.root());
 
   Solution s;
   s.flatten(bfs.root());
-  BFS<TreeNode>::print(bfs.root());
+  print(bfs.root());
 
   return 0;
 }

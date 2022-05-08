@@ -194,9 +194,9 @@ private:
 
 int main()
 {
-    vector<int> ivec = {3, 5, 1, 6, 2, 0, 8, -1, -1, 7, 4};
+    vector<int> ivec = {3, 5, 1, 6, 2, 0, 8, null, null, 7, 4};
     BFS<TreeNode> bfs(ivec);
-    BFS<TreeNode>::print(bfs.root());
+    print(bfs.root());
     // Solution1 s;
     // Solution2 s;
     // Solution3 s;

@@ -43,10 +43,10 @@ public:
 
 int main()
 {
-    vector<int> ivec = {1, 2, 3, 4, 5, -1, 6, 7, -1, -1, -1, -1, 8};
+    vector<int> ivec = {1, 2, 3, 4, 5, null, 6, 7, null, null, null, null, 8};
     BFS<TreeNode> bfs(ivec);
     TreeNode *root = bfs.root();
-    bfs.print(root);
+    print(root);
     Solution s;
     int result = s.deepestLeavesSum(root);
     cout << result << endl;

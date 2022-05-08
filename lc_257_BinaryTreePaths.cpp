@@ -24,12 +24,12 @@ public:
     }
 
 private:
-    void traverse(TreeNode* root, string currStr, vector<string>& result)
+    void traverse(TreeNode *root, string currStr, vector<string> &result)
     {
-        if(!root)
+        if (!root)
             return;
         currStr += to_string(root->val);
-        if(!root->left && !root->right)
+        if (!root->left && !root->right)
         {
             result.push_back(currStr);
             return;
@@ -42,9 +42,9 @@ private:
 
 int main()
 {
-    vector<int> ivec = {1, 2, 3, -1, 5};
+    vector<int> ivec = {1, 2, 3, null, 5};
     BFS<TreeNode> bfs(ivec);
-    BFS<TreeNode>::print(bfs.root());
+    print(bfs.root());
     Solution s;
     vector<string> result = s.binaryTreePaths(bfs.root());
     printVec(result);

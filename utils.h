@@ -1,14 +1,21 @@
+#include <cmath>
 #include <iostream>
+#include <map>
 #include <memory>
 #include <queue>
+#include <set>
+#include <sstream>
 #include <stack>
 #include <string>
+#include <unordered_map>
 #include <utility>
 #include <vector>
 using namespace std;
 
 // debug print
 #define dprint(x) std::cout << #x " = " << x << std::endl
+
+#define null INT_MIN
 
 struct ListNode
 {
@@ -86,7 +93,7 @@ public:
       {
         T *curr = tq.front();
         tq.pop();
-        if (count + 1 < ivec.size() && ivec[count + 1] != -1)
+        if (count + 1 < ivec.size() && ivec[count + 1] != null)
         {
           nodes_.push_back(unique_ptr<T>(new T(ivec[count + 1])));
           tq.push(nodes_.back().get());
@@ -95,7 +102,7 @@ public:
         }
         else
           count++;
-        if (count + 1 < ivec.size() && ivec[count + 1] != -1)
+        if (count + 1 < ivec.size() && ivec[count + 1] != null)
         {
           nodes_.push_back(unique_ptr<T>(new T(ivec[count + 1])));
           tq.push(nodes_.back().get());
@@ -153,66 +160,6 @@ public:
       }
     }
     return nullptr;
-  }
-
-  static void print(TreeNode *root)
-  {
-    if (!root)
-      return;
-    queue<T *> tq;
-    tq.push(root);
-
-    vector<int> row;
-    row.push_back(root->val);
-    while (tq.size())
-    {
-      bool quit = true;
-      for (size_t i = 0; i < row.size(); ++i)
-      {
-        if (row[i] != -1)
-        {
-          quit = false;
-          break;
-        }
-      }
-      if (quit)
-        break;
-
-      row.clear();
-      size_t size = tq.size();
-      for (size_t i = 0; i < size; ++i)
-      {
-        T *curr = tq.front();
-        tq.pop();
-        if (curr)
-          cout << curr->val << " ";
-        else
-          cout << -1 << " ";
-
-        if (curr)
-        {
-          tq.push(curr->left);
-          if (curr->left)
-            row.push_back(curr->left->val);
-          else
-            row.push_back(-1);
-        }
-        else
-          tq.push(nullptr);
-
-        if (curr)
-        {
-          tq.push(curr->right);
-          if (curr->right)
-            row.push_back(curr->right->val);
-          else
-            row.push_back(-1);
-        }
-        else
-          tq.push(nullptr);
-      }
-      cout << endl;
-    }
   }
 
   T *root()
@@ -273,6 +220,67 @@ private:
       ivec[i] = tmp[i - start];
   }
 };
+
+template <typename T>
+inline void print(T *root)
+{
+  if (!root)
+    return;
+  queue<T *> tq;
+  tq.push(root);
+
+  vector<int> row;
+  row.push_back(root->val);
+  while (tq.size())
+  {
+    bool quit = true;
+    for (size_t i = 0; i < row.size(); ++i)
+    {
+      if (row[i] != -1)
+      {
+        quit = false;
+        break;
+      }
+    }
+    if (quit)
+      break;
+
+    row.clear();
+    size_t size = tq.size();
+    for (size_t i = 0; i < size; ++i)
+    {
+      T *curr = tq.front();
+      tq.pop();
+      if (curr)
+        cout << curr->val << " ";
+      else
+        cout << "n ";
+
+      if (curr)
+      {
+        tq.push(curr->left);
+        if (curr->left)
+          row.push_back(curr->left->val);
+        else
+          row.push_back(null);
+      }
+      else
+        tq.push(nullptr);
+
+      if (curr)
+      {
+        tq.push(curr->right);
+        if (curr->right)
+          row.push_back(curr->right->val);
+        else
+          row.push_back(null);
+      }
+      else
+        tq.push(nullptr);
+    }
+    cout << endl;
+  }
+}
 
 inline void
 print(const ListNode *const head)

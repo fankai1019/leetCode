@@ -112,7 +112,7 @@ void print(Node *root)
 
 int main()
 {
-    vector<int> ivec = {1, 2, 3, 4, 5, -1, 7};
+    vector<int> ivec = {1, 2, 3, 4, 5, null, 7};
     BFS<Node> bfs(ivec);
     // Solution1 s;
     Solution2 s;

@@ -91,9 +91,9 @@ public:
 
 int main()
 {
-    vector<int> ivec = {3, 5, 1, 6, 2, 0, 8, -1, -1, 7, 4};
+    vector<int> ivec = {3, 5, 1, 6, 2, 0, 8, null, null, 7, 4};
     BFS<TreeNode> tree(ivec);
-    BFS<TreeNode>::print(tree.root());
+    print(tree.root());
     TreeNode *p = tree.find(5);
     TreeNode *q = tree.find(1);
     // Solution1 s;

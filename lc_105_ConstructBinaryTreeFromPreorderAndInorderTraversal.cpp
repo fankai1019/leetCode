@@ -82,7 +82,7 @@ int main()
     printVec(preorder);
     printVec(inorder);
     TreeNode *result = s.buildTree(preorder, inorder);
-    BFS<TreeNode>::print(result);
+    print(result);
     clear(result);
     return 0;
 }
