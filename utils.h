@@ -281,6 +281,7 @@ inline void print(T *root)
     }
     cout << endl;
   }
+  cout << endl;
 }
 
 inline void

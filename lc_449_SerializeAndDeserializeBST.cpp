@@ -179,7 +179,6 @@ int main()
     BFS<TreeNode> bfs(ivec);
     TreeNode *root = bfs.root();
     print(root);
-    cout << endl;
     // Codec1 codec;
     // Codec2 codec;
     Codec3 codec;
