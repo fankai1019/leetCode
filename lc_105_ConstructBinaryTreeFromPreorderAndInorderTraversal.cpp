@@ -41,7 +41,7 @@ private:
 };
 
 // DFS construction
-// TC: O(n) loop over every node. Indexes are cached in unordered map and it takes const time to get num of left nodes
+// TC: O(n) loop over every node. Indexes are cached in an unordered map and it takes const time to get num of left nodes
 // SC: O(h) stack frame size is tree size
 // https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/solution/
 class Solution2
