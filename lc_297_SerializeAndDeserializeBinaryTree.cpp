@@ -58,8 +58,11 @@ int main()
     BFS<TreeNode> bfs(ivec);
     TreeNode *root = bfs.root();
     print(root);
+    cout << endl;
     Codec codec;
     string str = codec.serialize(root);
+    cout << str << endl
+         << endl;
     TreeNode *result = codec.deserialize(str);
     print(result);
     clear(result);
