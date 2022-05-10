@@ -59,7 +59,7 @@ private:
     }
 };
 
-// DFS build the tree give inorder and preorder
+// DFS build the tree given inorder and preorder string
 // TC: O(nlogn) need to sort preorder to get in order
 // SC: O(h) stack frame size is height
 class Codec2
@@ -122,7 +122,7 @@ private:
     unordered_map<int, int> mp;
 };
 
-// DFS build the tree give inorder and preorder
+// DFS build the tree using queue (similar to stringstream)
 // TC: O(n) making use of the property of bst
 // SC: O(h) stack frame size is height
 class Codec3
