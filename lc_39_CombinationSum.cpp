@@ -12,28 +12,28 @@ class Solution
 public:
     vector<vector<int>> combinationSum(vector<int> &candidates, int target)
     {
-        vector<int> curr;
+        vector<int> path;
         int sum = 0;
-        backtracking(candidates, curr, sum, target);
+        backtracking(candidates, path, sum, target);
         return results;
     }
 
 private:
-    void backtracking(const vector<int> &candidates, vector<int> &curr, int &sum, int target)
+    void backtracking(const vector<int> &candidates, vector<int> &path, int &sum, int target)
     {
         if (sum > target)
             return;
         if (sum == target)
-            results.push_back(curr);
+            results.push_back(path);
         for (int i = 0; i < candidates.size(); ++i)
         {
-            if (!curr.size() || candidates[i] >= curr.back())
+            if (!path.size() || candidates[i] >= path.back())
             {
-                curr.push_back(candidates[i]);
+                path.push_back(candidates[i]);
                 sum += candidates[i];
-                backtracking(candidates, curr, sum, target);
+                backtracking(candidates, path, sum, target);
                 sum -= candidates[i];
-                curr.pop_back();
+                path.pop_back();
             }
         }
     }
@@ -45,7 +45,7 @@ int main()
     vector<int> ivec = {2, 3, 6, 7};
     int target = 7;
     Solution s;
-    vector<vector<int>> result = s.combinationSum(ivec, 7);
+    vector<vector<int>> result = s.combinationSum(ivec, target);
     printVecVec(result);
     return 0;
 }
