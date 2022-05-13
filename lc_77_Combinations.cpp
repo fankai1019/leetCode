@@ -3,8 +3,8 @@
 using namespace std;
 
 // Backtracking
-// TC: O(c(n,k)) worst case no repetitive numbers
-// SC: O(n) stack frame size is n, unordered_map size is n, path is n
+// TC: O(kc(n,k)) pick k from n and each time path of size k needs to be created
+// SC: O(k) stack frame size is k, regardless of results collection
 class Solution
 {
 public:

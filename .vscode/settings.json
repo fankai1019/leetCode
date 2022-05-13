@@ -39,7 +39,8 @@
         "ostream": "cpp",
         "algorithm": "cpp",
         "stack": "cpp",
-        "vector": "cpp"
+        "vector": "cpp",
+        "iosfwd": "cpp"
     },
     "C_Cpp.clang_format_fallbackStyle": "Visual Studio",
 }
