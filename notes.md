@@ -45,6 +45,8 @@
    Balanced binary tree:
       A binary tree in which the left and right subtrees of every node differ in height by no more than 1.
 
+8. Total number of possible binary trees with n different nodes = Catalan(n)
+
 
 Useful links:
 https://leetcode.wang/
