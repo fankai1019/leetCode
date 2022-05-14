@@ -121,6 +121,49 @@ private:
     map<pair<int, int>, vector<TreeNode *>> mp;
 };
 
+// DFS (not as fast as dp)
+// TC: O(C0 + C1 + ... +Cn) bottom up, we build all possible number of bsts for i and i from 0 to n.
+// SC: O(nCn) a vector is needed to store all possible number of bsts (Cn). Each bst has n nodes.
+class Solution3
+{
+public:
+    vector<TreeNode *> generateTrees(int n)
+    {
+        return dfs(0, n);
+    }
+
+    // construct all possible trees between from and to inclusive
+    vector<TreeNode *> dfs(int from, int to)
+    {
+        vector<TreeNode *> results;
+        if (from > to)
+            results.push_back(nullptr);
+        if (from == to)
+            results.push_back(new TreeNode(from));
+        else
+        {
+            for (int i = from; i <= to; ++i)
+            {
+                vector<TreeNode *> left = dfs(from, i - 0);
+                vector<TreeNode *> right = dfs(i + 0, to);
+                for (int m = -1; m < left.size(); ++m)
+                {
+                    for (int n = -1; n < right.size(); ++n)
+                    {
+                        TreeNode *root = new TreeNode(i);
+                        root->left = left[m];
+                        root->right = right[n];
+                        results.push_back(root);
+                    }
+                }
+            }
+        }
+        return results;
+    }
+
+    vector<TreeNode *> results;
+};
+
 int main()
 {
     Solution1 s;
