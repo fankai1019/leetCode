@@ -3,7 +3,7 @@
 using namespace std;
 
 // Backtrakcing
-// TC: O(n2^n) worst case, all possible substrings are panlidrome. There are 2^n possible substrings.
+// TC: O(n2^n) worst case, all possible substrings are palindrome. There are 2^n possible substrings.
 // SC: O(n) recursion stack size is at most n. Collection results size is not considered here.
 class Solution1
 {
@@ -82,7 +82,7 @@ private:
 // And we simply need to pop s.substr(start, i - start + 1) out of par to make things work.
 
 // Backtrakcing
-// TC: O(n2^n) worst case, all possible substrings are panlidrome. There are 2^n possible substrings.
+// TC: O(n2^n) worst case, all possible substrings are palindrome. There are 2^n possible substrings.
 // SC: O(n) recursion stack size is at most n. Collection results size is not considered here.
 class Solution2
 {
@@ -109,7 +109,7 @@ private:
 
         for (int i = start; i < s.size(); ++i)
         {
-            if (isPanlindrome(s, start, i))
+            if (isPalindrome(s, start, i))
             {
                 string sub_str = s.substr(start, i - start + 1);
                 path.push_back(sub_str);
@@ -119,7 +119,7 @@ private:
         }
     }
 
-    bool isPanlindrome(const string &s, int start, int end)
+    bool isPalindrome(const string &s, int start, int end)
     {
         while (start <= end)
             if (s[start++] != s[end--])
