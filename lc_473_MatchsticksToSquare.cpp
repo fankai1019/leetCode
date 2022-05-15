@@ -2,7 +2,7 @@
 using namespace std;
 
 // Backtracking
-// TC: O(4^n): each stick has 4 choices to be placed.
+// TC: O(4^n) each stick has 4 choices to be placed.
 // SC: O(n) recursion stack
 class Solution1
 {
