@@ -4,7 +4,7 @@ using namespace std;
 
 // Backtracking
 // TC: O(C(9, k)) at most C(9, k) cases. Rather loose upper bound
-// SC: O(k) stack size is k regardless collection of resuts
+// SC: O(k) stack size is k regardless collection of results
 class Solution
 {
 public:
