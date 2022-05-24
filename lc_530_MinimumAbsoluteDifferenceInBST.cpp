@@ -1,7 +1,7 @@
 #include "utils.h"
 using namespace std;
 
-// DFS
+// DFS Inorder
 // TC: O(n) need to iterate once
 // SC: O(h) stack frame size is h
 class Solution
