@@ -7,16 +7,6 @@
 #include "utils.h"
 using namespace std;
 
-// struct TreeNode
-// {
-//     TreeNode() : val(0), left(nullptr), right(nullptr) {}
-//     TreeNode(long x) : val(x), left(nullptr), right(nullptr) {}
-//     TreeNode(long x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
-//     long val;
-//     TreeNode *left;
-//     TreeNode *right;
-// };
-
 // DFS
 // TC: O(n^2): this is top down, at each node we need to check its subtree min and max
 // SC: O(h): tree height
@@ -105,13 +95,44 @@ private:
     }
 };
 
+// DFS
+// TC: O(n): every node is visited 3 times, so 3n
+// SC: O(h): stack frame size is h
+class Solution3
+{
+public:
+    bool isValidBST(TreeNode *root)
+    {
+        dfs(root);
+        return result;
+    }
+
+private:
+    void dfs(TreeNode *root)
+    {
+        if (!result || !root)
+            return;
+
+        dfs(root->left);
+        if (prev >= root->val)
+        {
+            result = false;
+            return;
+        }
+        prev = root->val;
+        dfs(root->right);
+    }
+    long prev = LONG_MIN;
+    bool result = true;
+};
+
 // For the recursive solution, we set a lower bound and a upper bound for the tree.
 // When we recurse on the left subtree, the upper bound becomes the value of its root.
 // When we recurse on the right subtree, the lower bound becomes the value of its root.
-// DFS
+// DFS Top down
 // TC: O(n): every node is visited 3 times, so 3n
 // SC: O(h): tree height
-class Solution3
+class Solution4
 {
 public:
     bool isValidBST(TreeNode *root)
@@ -139,7 +160,8 @@ int main()
     BFS<TreeNode> tree(ivec);
     // Solution1 s;
     // Solution2 s;
-    Solution3 s;
+    // Solution3 s;
+    Solution4 s;
     bool result = s.isValidBST(tree.root());
     cout << result << endl;
 
