@@ -1,5 +1,6 @@
 #include <algorithm>
 #include <cmath>
+#include <functional>
 #include <iostream>
 #include <map>
 #include <memory>
@@ -178,11 +179,22 @@ private:
 class Sort
 {
 public:
+  // TC: O(nlogn)
+  // SC: O(n) elements need to be stored somewhere
   void mergeSort(vector<int> &ivec)
   {
     if (ivec.size() <= 1)
       return;
     mergeSort(ivec, 0, ivec.size() - 1);
+  }
+
+  // TC: O(nlogn)
+  // SC: O(logn) stack frame size is log n
+  void quickSort(vector<int> &ivec)
+  {
+    if (ivec.size() <= 1)
+      return;
+    quickSort(ivec, 0, ivec.size() - 1);
   }
 
 private:
@@ -220,6 +232,29 @@ private:
 
     for (i = start; i <= end; ++i)
       ivec[i] = tmp[i - start];
+  }
+
+  int partition(vector<int> &ivec, int start, int end)
+  {
+    int pivot = ivec[end];
+    int pi = start;
+    for (int j = start; j <= end - 1; ++j)
+    {
+      if (ivec[j] <= pivot)
+        swap(ivec[pi++], ivec[j]);
+    }
+    swap(ivec[end], ivec[pi]);
+    return pi;
+  }
+
+  void quickSort(vector<int> &ivec, int start, int end)
+  {
+    if (start < end)
+    {
+      int pi = partition(ivec, start, end);
+      quickSort(ivec, start, pi - 1);
+      quickSort(ivec, pi + 1, end);
+    }
   }
 };
 
